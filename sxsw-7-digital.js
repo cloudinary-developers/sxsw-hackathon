@@ -212,7 +212,8 @@ app.get('/details/:trackid', function ( req, res) {
 const trackid = req.params.trackid || '14643';
   getDetails(trackid)
   .then(function(data){
-        res.send( data.track.isrc);   
+  const isrc = data.track.isrc;
+        res.send( data);   
    }).catch(function(err){
       console.log('ERR:', err);
       res.send(err);
