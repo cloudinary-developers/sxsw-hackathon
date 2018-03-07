@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 var app = express();
 
-var api, artists, releases, consumerkey, consumersecret;
+var api, artists, tracks, releases, consumerkey, consumersecret;
 
 app.use(bodyParser.json());
 
@@ -31,6 +31,7 @@ var apiContext = function (req, res, next) {
 });
   artists = new api.Artists();
   releases = new api.Releases();
+  tracks = new api.Tracks();
   console.log('API Inited.')
   next()
 }
