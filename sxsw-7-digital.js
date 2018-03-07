@@ -210,7 +210,8 @@ var getDetails = function(trackid) {
 
 var getLyrics = function(isrc, data) {  
   return new Promise(function (resolve, reject) {
-    
+    //matcher.lyrics.get?track_isrc=isrc
+
        
             reject(err)
    
