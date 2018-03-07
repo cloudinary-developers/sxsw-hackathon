@@ -207,7 +207,7 @@ var getDetails = function(trackid) {
 }
 
 app.get('/details/:trackid', function ( req, res) {
-const trackid = req.params.artistid || '14643';
+const trackid = req.params.trackid || '14643';
   getDetails(trackid)
   .then(function(data){
         res.send( data);   
