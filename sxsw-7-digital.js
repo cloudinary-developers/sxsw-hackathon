@@ -195,7 +195,7 @@ const artistid = req.params.artistid || '14643';
 var getDetails = function(trackid) {  
   return new Promise(function (resolve, reject) {
     
-        releases.getDetails({ releaseid: trackid }, function(err, data) {
+        tracks.getDetails({ trackid: trackid }, function(err, data) {
         if(err){
           console.log(err);
             reject(err)
