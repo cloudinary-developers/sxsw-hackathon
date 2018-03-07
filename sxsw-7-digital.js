@@ -208,7 +208,7 @@ var getDetails = function(trackid) {
 
 app.get('/details/:trackid', function ( req, res) {
 const trackid = req.params.trackid || '14643';
-  getDetails(trackid)
+  getDetails(trackid, artistId)
   .then(function(data){
         res.send( data);   
    }).catch(function(err){
