@@ -1,6 +1,7 @@
 /**
 * @param context {WebtaskContext}
 *  Requires Cloudinary, 7Digital-api and request
+*  Add the following Keys and Appropriate Values to your secrets WT_API_KEY, cloud_name, api_key, api_secret
 */
 
 const cloudinary = require('cloudinary');
@@ -40,7 +41,4 @@ module.exports = function(context, req ,res) {
     //var image = cloudinary.image(public_id + ".jpg",{overlay:overlay,effect: effect + style_strength, sign_url: true}); 
      //  res.writeHead(200, { 'Content-Type': 'text/html '});
      // res.end(image);
-      
-       
-       
 };
