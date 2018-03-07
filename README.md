@@ -1,2 +1,2 @@
-# sxsw-hackathon
-sxsw hackathon
+# SXSW Hackathon
+SXSW Hackathon resources and source code
