@@ -32,10 +32,11 @@ module.exports = function(context, req ,res) {
     }
     
     
-    var image = cloudinary.url(public_id + ".jpg",{overlay:overlay,effect: effect + style_strength, sign_url: true});
-    console.log(image)
-      //  res.writeHead(200, { 'Content-Type': 'text/html '});
+    var url = cloudinary.url(public_id + ".jpg",{overlay:overlay,effect: effect + style_strength, sign_url: true});
+    //var image = cloudinary.image(public_id + ".jpg",{overlay:overlay,effect: effect + style_strength, sign_url: true}); 
+    console.log(url)
+     //  res.writeHead(200, { 'Content-Type': 'text/html '});
      // res.end(image);
       
-       request(image).pipe(res);
+       request(url).pipe(res);
 };
