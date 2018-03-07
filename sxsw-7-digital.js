@@ -188,9 +188,42 @@ const artistid = req.params.artistid || '14643';
    })
 });
 
+
+//http://api.7digital.com/1.2/track/details?trackid=123456&oauth_consumer_key=YOUR_KEY_HERE&country=GB&usageTypes=download,subscriptionstreaming,adsupportedstreaming
+var getDetails = function(trackid) {  
+  return new Promise(function (resolve, reject) {
+    
+        artists.getDetails({ trackid: trackid }, function(err, data) {
+        if(err){
+          console.log(err);
+            reject(err)
+        }
+        if(data){
+          console.log(data);
+          resolve(data);
+        } 
+      });
+  })
+}
+
+app.get('/details/:trackid', function ( req, res) {
+const trackid = req.params.artistid || '14643';
+  getDetails(trackid)
+  .then(function(data){
+        res.send( data);   
+   }).catch(function(err){
+      console.log('ERR:', Err);
+      res.send(err);
+   })
+});
+
+
 app.get('/', function (req, res) {
   
   res.sendStatus(200);
 });
+
+
+
 
 module.exports = Webtask.fromExpress(app);
