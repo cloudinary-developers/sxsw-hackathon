@@ -1,8 +1,10 @@
 /**
 * @param context {WebtaskContext}
+*  Requires Cloudinary, 7Digital-api and request
 */
 
 const cloudinary = require('cloudinary');
+const request = require('request');
 
 
 module.exports = function(context, req ,res) {
@@ -20,7 +22,7 @@ module.exports = function(context, req ,res) {
     });
     
     const effect = context.data.effect ||  "style_transfer";
-    const public_id = context.data.pid ||  "domestic-dog_thumb_ceymam";
+    const public_id = context.data.public_id ||  "domestic-dog_thumb_ceymam";
     const overlay = context.data.overlay || "starrynight"; // "the-breeders-all-nerve";
     
     const strength =  context.data.strength ||  "";
@@ -32,6 +34,8 @@ module.exports = function(context, req ,res) {
     
     var image = cloudinary.url(public_id + ".jpg",{overlay:overlay,effect: effect + style_strength, sign_url: true});
     console.log(image)
-      res.writeHead(200, { 'Content-Type': 'text/html '});
-      res.end(image);
+      //  res.writeHead(200, { 'Content-Type': 'text/html '});
+     // res.end(image);
+      
+       request(image).pipe(res);
 };
