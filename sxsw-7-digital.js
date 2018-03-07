@@ -208,6 +208,18 @@ var getDetails = function(trackid) {
   })
 }
 
+var getLyrics = function(trackid) {  
+  return new Promise(function (resolve, reject) {
+    
+       
+            reject(err)
+   
+          resolve(data);
+ 
+  })
+}
+
+
 app.get('/details/:trackid', function ( req, res) {
 const trackid = req.params.trackid || '14643';
   getDetails(trackid)
