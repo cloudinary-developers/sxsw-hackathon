@@ -236,7 +236,7 @@ console.log(releaseid)
   .then(function(data){
         res.send( data);   
    }).catch(function(err){
-      console.log('ERR:', Err);
+      console.log('ERR:', err);
       res.send(err);
    })
 });
