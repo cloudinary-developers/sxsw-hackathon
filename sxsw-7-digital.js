@@ -54,7 +54,7 @@ var oauth = new api.OAuth();
        var signedURL = oauth.sign(apiUrl);
        if(signedURL){
           console.log(signedURL)
-          resolve(signedURL);
+          resolve({url:signedURL});
        }else{
           reject('we had an error');
        }
@@ -67,8 +67,12 @@ app.get('/song/:trackid', function ( req, res) {
   const context = req.webtaskContext;
   const shouldStream = context.data.stream || false;
   getSong(context, trackid).then(function(data){
-       // res.send( data);   
+    
+      if(shouldStream){
         request(data).pipe(res);
+      }else{
+        res.send( data.url);   
+      }
    }).catch(function(err){
       console.log('ERR:', Err);
       res.send(err);
