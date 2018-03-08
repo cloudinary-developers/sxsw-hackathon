@@ -3,6 +3,7 @@ const express    = require('express');
 const Webtask    = require('webtask-tools');
 const bodyParser = require('body-parser');
 const request = require('request');
+var parsePath = require('parse-filepath');
 
 var app = express();
 
