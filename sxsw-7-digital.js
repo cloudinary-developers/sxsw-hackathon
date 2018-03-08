@@ -229,9 +229,10 @@ return  new Promise(function (resolve, reject) {
   var url = coverImageURL || 'http://res.cloudinary.com/de-demo/video/upload/v1520429530/test-audio.mp3' ; 
   var public_id =  parsePath(url).name;
   
-        // explicit 
+        // uses upload preset:  https://cloudinary.com/console/settings/upload
         cloudinary.v2.uploader.upload(url, 
               { 
+              upload_preset: 'sxsw',  
               public_id: public_id,  
               type: "upload",
               resource_type: "image", 
