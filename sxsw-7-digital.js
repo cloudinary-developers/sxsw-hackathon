@@ -280,6 +280,8 @@ const releaseid = req.params.releaseid || '7456808';
 console.log(releaseid)
   getTracks(releaseid)
   .then(function(data){
+    
+    //getThemes
         res.send( data);   
    }).catch(function(err){
       console.log('ERR:', err);
