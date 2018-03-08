@@ -61,7 +61,7 @@ var oauth = new api.OAuth();
       });
 }
 
-//https://evangelism.cloudinary.auth0-extend.com/SXSW-7Digital/song/70540913/stream/
+// /song/70540913/stream/
 
 app.get('/song/:trackid/?:stream', function ( req, res) {
   
@@ -74,7 +74,7 @@ app.get('/song/:trackid/?:stream', function ( req, res) {
   getSong(context, trackid).then(function(data){
     
       if(shouldStream == 'stream'){
-        request(data).pipe(res);
+        request(data.url).pipe(res);
       }else{
         res.send( data);   
       }
@@ -102,12 +102,20 @@ var getClip = function(trackid){
       });
 }
  
- app.get('/clip/:trackid', function ( req, res) {
+ // /song/70540913/stream/
+
+ app.get('/clip/:trackid/?:stream', function ( req, res) {
   var trackid = req.params.trackid || '12345';   // /clip/12345
+  const context = req.webtaskContext;
+  const shouldStream = req.params.stream  || "url";
+  
   getClip(trackid)
   .then(function(data){
-        //res.send( data);   
+      if(shouldStream == 'stream'){
         request(data.url).pipe(res);
+      }else{
+        res.send( data);   
+      }
    })
    .catch(function(err){
       console.log('ERR:', Err);
