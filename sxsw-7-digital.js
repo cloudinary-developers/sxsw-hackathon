@@ -56,6 +56,21 @@ var apiContext = function (req, res, next) {
 app.use(apiContext)
 
 
+var getThemes = function(context, trackid){
+ 
+    return new Promise(function (resolve, reject) {
+       var apiUrl = 'https://stream.svc.7digital.net/stream/catalogue?country=GB&trackid=' + trackid;
+       var signedURL = oauth.sign(apiUrl);
+       if(signedURL){
+          console.log(signedURL)
+          resolve({url:signedURL});
+       }else{
+          reject('we had an error');
+       }
+      });
+}
+
+
 
 var getSong = function(context, trackid){
   // For access to locker / subscription streaming without managed users you
