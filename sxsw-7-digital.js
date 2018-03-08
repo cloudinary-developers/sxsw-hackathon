@@ -1,7 +1,9 @@
+const cloudinary = require('cloudinary');
 const express    = require('express');
 const Webtask    = require('webtask-tools');
 const bodyParser = require('body-parser');
 const request = require('request');
+
 var app = express();
 
 var api, artists, tracks, releases , consumerkey, consumersecret;
@@ -11,6 +13,15 @@ app.use(bodyParser.json());
 // Our Middleware to setup API 
 var apiContext = function (req, res, next) {
   const context = req.webtaskContext;
+  
+  // config cloudinary  
+  cloudinary.config({
+      "cloud_name": context.secrets.cloud_name,
+      "api_key": context.secrets.api_key,
+      "api_secret": context.secrets.api_secret
+    });
+
+  
   const page = context.data.page || 1;
   const pageSize = context.data.pageSize || 100;
   
