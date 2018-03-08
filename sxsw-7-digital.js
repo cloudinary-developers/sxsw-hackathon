@@ -210,7 +210,9 @@ var getTracks = function(releaseid) {
 
 // Get tracks by releaseID: 7456808
 app.get('/tracks/:releaseid', function ( req, res) {
-const artistid = req.params.releaseid || '7456808';
+  
+const releaseid = req.params.releaseid || '7456808';
+console.log(releaseid)
   getTracks(releaseid)
   .then(function(data){
         res.send( data);   
