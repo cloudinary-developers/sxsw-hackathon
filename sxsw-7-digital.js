@@ -59,9 +59,11 @@ app.use(apiContext)
 
 var getThemes = function(coverImageURL){
  
+ console.log('coverImageURL', coverImageURL);
+ 
  var  uploadCoverImage = new Promise(function (resolve, reject) {
   var url = coverImageURL || 'http://res.cloudinary.com/de-demo/video/upload/v1520429530/test-audio.mp3' ; 
-  var public_id =  parsePath(url).name + "-test";
+  var public_id =  parsePath(url).name;
   
         // explicit 
         cloudinary.v2.uploader.upload(url, 
