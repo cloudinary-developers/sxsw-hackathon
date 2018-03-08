@@ -280,16 +280,16 @@ console.log(releaseid)
     console.log(data); 
     var coverImageURL = data.tracks.track[0].release.image;
      console.log('coverImageURL', coverImageURL); 
-      res.send( data);   
-      // getThemes(coverImageURL)
-      // .then(function(imageData){
-      //     console.log(imageData); 
-      //     data.cloudinary = imageData;
-      //     res.send( data);   
-      //   })
-      //   .catch(function(error){
-      //     console.log(error); 
-      //   });
+     // res.send( data);   
+      getThemes(coverImageURL)
+      .then(function(imageData){
+          console.log(imageData); 
+          data.cloudinary = imageData;
+          res.send( data);   
+        })
+        .catch(function(error){
+          console.log(error); 
+        });
       
       
         
