@@ -60,7 +60,7 @@ app.use(apiContext)
 var getThemes = function(coverImageURL){
  
   return new Promise(function (resolve, reject) {
-  var url = context.data.url || 'http://res.cloudinary.com/de-demo/video/upload/v1520429530/test-audio.mp3' ; 
+  var url = coverImageURL || 'http://res.cloudinary.com/de-demo/video/upload/v1520429530/test-audio.mp3' ; 
   var public_id =  parsePath(url).name + "-test";
   
         // explicit 
