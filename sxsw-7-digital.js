@@ -280,9 +280,10 @@ console.log(releaseid)
   .then(function(data){
     console.log(data); 
     var coverImageURL = data.tracks.track[0].release.image;
-     console.log('coverImageURL', coverImageURL); 
+    var public_id = data.tracks.track[0].release.title.replace(' ','_') + '_' + data.tracks.track[0].release.id;
+     console.log('coverImageURL', coverImageURL, public_id); 
      // res.send( data);   
-      getThemes(coverImageURL)
+      getThemes(coverImageURL, public_id)
       .then(function(imageData){
           console.log(imageData); 
           data.tracks.track[0].cloudinary = imageData;
