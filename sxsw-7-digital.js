@@ -243,7 +243,19 @@ console.log(releaseid)
 
 
 
-//http://api.7digital.com/1.2/track/details?trackid=123456&oauth_consumer_key=YOUR_KEY_HERE&country=GB&usageTypes=download,subscriptionstreaming,adsupportedstreaming
+// var getLyrics = function(isrc, data) {  
+//   return new Promise(function (resolve, reject) {
+//     //matcher.lyrics.get?track_isrc=isrc
+
+       
+//             reject(err)
+   
+//           resolve(data);
+ 
+//   })
+// }
+
+
 var getDetails = function(trackid) {  
   return new Promise(function (resolve, reject) {
     
@@ -259,23 +271,6 @@ var getDetails = function(trackid) {
       });
   })
 }
-
-
-
-
-
-
-// var getLyrics = function(isrc, data) {  
-//   return new Promise(function (resolve, reject) {
-//     //matcher.lyrics.get?track_isrc=isrc
-
-       
-//             reject(err)
-   
-//           resolve(data);
- 
-//   })
-// }
 
 
 app.get('/details/:trackid', function ( req, res) {
