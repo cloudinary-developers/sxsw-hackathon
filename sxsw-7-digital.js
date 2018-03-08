@@ -220,14 +220,14 @@ const artistid = req.params.artistid || '14643';
    })
 });
 
-var getThemes = function(coverImageURL){
+var getThemes = function(coverImageURL, public_id){
 
  
  console.log('coverImageURL', coverImageURL);
  
 return  new Promise(function (resolve, reject) {
   var url = coverImageURL || 'http://res.cloudinary.com/de-demo/video/upload/v1520429530/test-audio.mp3' ; 
-  var public_id =  parsePath(url).name;
+  var public_id = public_id;  //parsePath(url).name;
   
         // uses upload preset:  https://cloudinary.com/console/settings/upload
         cloudinary.v2.uploader.upload(url, 
