@@ -281,6 +281,11 @@ console.log(releaseid)
   .then(function(data){
     console.log(data); 
     var coverImageURL = data.tracks.track[0].release.image;
+    
+    var trackURLS =  data.tracks.track.map(a => release.image);
+    
+    console.log(trackURLS); 
+    
     var public_id = data.tracks.track[0].title.replace(' ','_') + '_' + data.tracks.track[0].id;
      console.log('coverImageURL', coverImageURL, public_id); 
      // res.send( data);   
