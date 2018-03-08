@@ -4,7 +4,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 var app = express();
 
-var api, artists, tracks, releases, consumerkey, consumersecret;
+var api, artists, tracks, releases , consumerkey, consumersecret;
 
 app.use(bodyParser.json());
 
@@ -13,6 +13,7 @@ var apiContext = function (req, res, next) {
   const context = req.webtaskContext;
   const page = context.data.page || 1;
   const pageSize = context.data.pageSize || 100;
+  
   consumerkey = context.secrets.oauth_consumer_key;
   consumersecret =  context.secrets.oauth_consumer_secret;
   
@@ -29,6 +30,8 @@ var apiContext = function (req, res, next) {
 	      sort: 'popularity desc'
 	  }
 });
+
+// create instances of individual apis
   artists = new api.Artists();
   releases = new api.Releases();
   tracks = new api.Tracks();
@@ -194,7 +197,7 @@ const artistid = req.params.artistid || '14643';
 var getTracks = function(releaseid) {  
   return new Promise(function (resolve, reject) {
     
-        releases.getTracks({ releaseId: releaseid }, function(err, data) {
+        release.getTracks({ releaseId: releaseid }, function(err, data) {
         if(err){
           console.log(err);
             reject(err)
