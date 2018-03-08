@@ -282,7 +282,7 @@ console.log(releaseid)
     console.log(data); 
     var coverImageURL = data.tracks.track[0].release.image;
     
-    var trackURLS =  data.tracks.track.map(a => a.release.image);
+    var trackURLS =  data.tracks.track.map(a => {slug:a.slug, url: a.release.image,  id: a.release.id, title: a.release.title,});
     
     console.log('My list\n', trackURLS); 
     
