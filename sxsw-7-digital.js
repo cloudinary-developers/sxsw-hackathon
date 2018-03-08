@@ -290,7 +290,7 @@ console.log(releaseid)
       object.isrc = item.isrc;
       object.trackNumber = item.trackNumber;
       
-      object.slug = item.slug;
+      object.slug = item.release.slug;
       return object;
     });
       
