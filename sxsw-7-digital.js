@@ -279,15 +279,17 @@ console.log(releaseid)
   .then(function(data){
     console.log(data); 
     var coverImageURL = data.track[0].image;
-      getThemes(coverImageURL)
-      .then(function(imageData){
-          console.log(imageData); 
-          data.cloudinary = imageData;
-          res.send( data);   
-        })
-        .catch(function(error){
-           console.log(error); 
-        });
+     console.log('coverImageURL', coverImageURL); 
+      res.send( data);   
+      // getThemes(coverImageURL)
+      // .then(function(imageData){
+      //     console.log(imageData); 
+      //     data.cloudinary = imageData;
+      //     res.send( data);   
+      //   })
+      //   .catch(function(error){
+      //     console.log(error); 
+      //   });
       
       
         
