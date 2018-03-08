@@ -284,7 +284,7 @@ console.log(releaseid)
       getThemes(coverImageURL)
       .then(function(imageData){
           console.log(imageData); 
-          data.cloudinary = imageData;
+          data.tracks.track[0].cloudinary = imageData;
           res.send( data);   
         })
         .catch(function(error){
