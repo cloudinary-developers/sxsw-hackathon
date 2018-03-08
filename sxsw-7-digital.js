@@ -149,9 +149,7 @@ app.get('/browse/:letter', function ( req, res) {
 }
   
 app.get('/search/:query', function ( req, res) {
-  
   const query = req.params.query || 1;
- 
   search(query).then(function(data){
         res.send( data);   
    })
@@ -159,7 +157,6 @@ app.get('/search/:query', function ( req, res) {
       console.log('ERR: ', error);
       res.send(error);
    })
-  
 });
   
   
@@ -197,7 +194,8 @@ const artistid = req.params.artistid || '14643';
 var getTracks = function(releaseid) {  
   return new Promise(function (resolve, reject) {
     
-        release.getTracks({ releaseId: releaseid }, function(err, data) {
+    
+        releases.getTracks({ releaseid: releaseid }, function(err, data) {
         if(err){
           console.log(err);
             reject(err)
