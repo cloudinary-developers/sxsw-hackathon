@@ -56,18 +56,32 @@ var apiContext = function (req, res, next) {
 app.use(apiContext)
 
 
-var getThemes = function(context, trackid){
+var getThemes = function(coverImageURL){
  
-    return new Promise(function (resolve, reject) {
-       var apiUrl = 'https://stream.svc.7digital.net/stream/catalogue?country=GB&trackid=' + trackid;
-       var signedURL = oauth.sign(apiUrl);
-       if(signedURL){
-          console.log(signedURL)
-          resolve({url:signedURL});
-       }else{
-          reject('we had an error');
-       }
-      });
+  return new Promise(function (resolve, reject) {
+  var url = context.data.url || 'http://res.cloudinary.com/de-demo/video/upload/v1520429530/test-audio.mp3' ; 
+  var public_id =  parsePath(url).name + "-test";
+  
+        // explicit 
+        cloudinary.v2.uploader.upload(url, 
+              { 
+              public_id: public_id,  
+              type: "upload",
+              resource_type: "image", 
+              // raw_convert: "google_speech",
+              // notification_url: "https://cloudinary.auth0-extend.com/api/run/evangelism/cloudinary-webhook"
+              }, 
+          function(error, result) {
+            if(error){
+              console.log(error); 
+                   reject( error);
+            }
+            if(result){
+              console.log(result); 
+             resolve(result);
+            }
+          });
+        });
 }
 
 
