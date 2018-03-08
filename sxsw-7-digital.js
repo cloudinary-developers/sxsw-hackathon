@@ -253,7 +253,7 @@ var getDetails = function(trackid) {
             reject(err)
         }
         if(data){
-          console.log(data);
+        //  console.log(data);
           resolve(data);
         } 
       });
@@ -282,6 +282,8 @@ app.get('/details/:trackid', function ( req, res) {
 const trackid = req.params.trackid || '14643';
   getDetails(trackid)
   .then(function(data){
+    
+    console.log(JSON.stringify(data,null,5));
   const isrc = data.track[0].isrc;
   console.log(isrc);
   
