@@ -213,7 +213,6 @@ const artistid = req.params.artistid || '14643';
 var getTracks = function(releaseid) {  
   return new Promise(function (resolve, reject) {
     
-    
         releases.getTracks({ releaseid: releaseid }, function(err, data) {
         if(err){
           console.log(err);
