@@ -227,7 +227,7 @@ var getThemes = function(coverImageURL, public_id){
  
 return  new Promise(function (resolve, reject) {
   var url = coverImageURL || 'http://res.cloudinary.com/de-demo/video/upload/v1520429530/test-audio.mp3' ; 
-  var public_id = public_id;  //parsePath(url).name;
+   
   
         // uses upload preset:  https://cloudinary.com/console/settings/upload
         cloudinary.v2.uploader.upload(url, 
@@ -281,7 +281,7 @@ console.log(releaseid)
   .then(function(data){
     console.log(data); 
     var coverImageURL = data.tracks.track[0].release.image;
-    var public_id = data.tracks.track[0].release.title.replace(' ','_') + '_' + data.tracks.track[0].release.id;
+    var public_id = data.tracks.track[0].title.replace(' ','_') + '_' + data.tracks.track[0].id;
      console.log('coverImageURL', coverImageURL, public_id); 
      // res.send( data);   
       getThemes(coverImageURL, public_id)
