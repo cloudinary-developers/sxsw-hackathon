@@ -281,7 +281,8 @@ console.log(releaseid)
   getTracks(releaseid)
   .then(function(data){
     
-    //getThemes
+    var coverImageURL = data.tracks.track[0].image;
+      getThemes(coverImageURL);
         res.send( data);   
    }).catch(function(err){
       console.log('ERR:', err);
