@@ -263,7 +263,7 @@ var getTracks = function(releaseid) {
             reject(err)
         }
         if(data){
-          console.log(data);
+       //   console.log(data);
           resolve(data);
         } 
       });
@@ -277,7 +277,7 @@ const releaseid = req.params.releaseid || '7456808';
 console.log(releaseid)
   getTracks(releaseid)
   .then(function(data){
-    console.log(imageData); 
+    console.log(data); 
     var coverImageURL = data.tracks.track[0].image;
       getThemes(coverImageURL)
       .then(function(imageData){
