@@ -191,6 +191,39 @@ const artistid = req.params.artistid || '14643';
 });
 
 
+// Get tracks by releaseID: 
+var getTracks = function(releaseid) {  
+  return new Promise(function (resolve, reject) {
+    
+        releases.getTracks({ releaseid: releaseid }, function(err, data) {
+        if(err){
+          console.log(err);
+            reject(err)
+        }
+        if(data){
+          console.log(data);
+          resolve(data);
+        } 
+      });
+  })
+}
+
+// Get tracks by releaseID: 
+app.get('/tracks/:releaseid', function ( req, res) {
+const artistid = req.params.releaseid || '7456808';
+  getTracks(releaseid)
+  .then(function(data){
+        res.send( data);   
+   }).catch(function(err){
+      console.log('ERR:', Err);
+      res.send(err);
+   })
+});
+
+
+
+
+
 //http://api.7digital.com/1.2/track/details?trackid=123456&oauth_consumer_key=YOUR_KEY_HERE&country=GB&usageTypes=download,subscriptionstreaming,adsupportedstreaming
 var getDetails = function(trackid) {  
   return new Promise(function (resolve, reject) {
@@ -207,6 +240,11 @@ var getDetails = function(trackid) {
       });
   })
 }
+
+
+
+
+
 
 // var getLyrics = function(isrc, data) {  
 //   return new Promise(function (resolve, reject) {
