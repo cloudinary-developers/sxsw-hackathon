@@ -284,15 +284,13 @@ console.log(releaseid)
     
     var trackURLS =  data.tracks.track.map(function(item){
       var object = {};
-      object.url = item.release.image;
+      object.coverImageURL = item.release.image;
+      object.id = item.release.id;
+      object.title = item.release.title;
+      object.slug = item.slug;
       return object;
     });
       
-      
-    //   a => { slug:a.slug, 
-    // url: a.release.image,  
-    // id: a.release.id, 
-    // title: a.release.title });
     
     console.log('My list\n', trackURLS); 
     
