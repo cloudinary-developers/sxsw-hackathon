@@ -14,6 +14,7 @@ var apiContext = function (req, res, next) {
   const page = context.data.page || 1;
   const pageSize = context.data.pageSize || 100;
   
+  
   consumerkey = context.secrets.oauth_consumer_key;
   consumersecret =  context.secrets.oauth_consumer_secret;
   
@@ -64,7 +65,7 @@ app.get('/song/:trackid', function ( req, res) {
   
   const trackid = req.params.trackid  || '123456';  // /song/12345
   const context = req.webtaskContext;
-
+  const shouldStream = context.data.stream || false;
   getSong(context, trackid).then(function(data){
        // res.send( data);   
         request(data).pipe(res);
