@@ -61,14 +61,14 @@ var oauth = new api.OAuth();
       });
 }
 
-app.get('/song/:trackid', function ( req, res) {
+app.get('/song/:trackid/:stream', function ( req, res) {
   
   const trackid = req.params.trackid  || '123456';  // /song/12345
   const context = req.webtaskContext;
-  const shouldStream = context.data.stream || false;
+  const shouldStream = req.params.stream  || "url";
   getSong(context, trackid).then(function(data){
     
-      if(shouldStream){
+      if(shouldStream === 'stream'){
         request(data).pipe(res);
       }else{
         res.send( data.url);   
