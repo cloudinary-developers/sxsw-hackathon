@@ -287,6 +287,9 @@ console.log(releaseid)
       object.coverImageURL = item.release.image;
       object.id = item.release.id;
       object.title = item.release.title;
+      object.isrc = item.isrc;
+      object.trackNumber = item.trackNumber;
+      
       object.slug = item.slug;
       return object;
     });
