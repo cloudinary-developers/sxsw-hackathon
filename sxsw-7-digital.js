@@ -77,7 +77,7 @@ var getThemes = function(coverImageURL){
                    reject( error);
             }
             if(result){
-             resolve(result);
+                    resolve(result);
             }
           });
         });
