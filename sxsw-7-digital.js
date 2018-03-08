@@ -74,15 +74,22 @@ var getThemes = function(coverImageURL){
               }, 
           function(error, result) {
             if(error){
-              console.log(error); 
                    reject( error);
             }
             if(result){
-              console.log(result); 
              resolve(result);
             }
           });
         });
+        
+        
+        uploadCoverImage().then(function(data){
+          console.log(data); 
+        })
+        .catch(function(error){
+           console.log(error); 
+        });
+        
 }
 
 
