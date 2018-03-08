@@ -70,7 +70,7 @@ app.get('/song/:trackid/?:stream', function ( req, res) {
   
   getSong(context, trackid).then(function(data){
     
-      if(shouldStream == '/stream'){
+      if(shouldStream == 'stream'){
         request(data).pipe(res);
       }else{
         res.send( data.url);   
