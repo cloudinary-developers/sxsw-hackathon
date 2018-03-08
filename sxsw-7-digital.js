@@ -66,6 +66,7 @@ app.get('/song/:trackid/?:stream', function ( req, res) {
   const trackid = req.params.trackid  || '123456';  // /song/12345
   const context = req.webtaskContext;
   const shouldStream = req.params.stream  || "url";
+  console.log(trackid);
   console.log(shouldStream);
   
   getSong(context, trackid).then(function(data){
