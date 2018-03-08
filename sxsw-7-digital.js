@@ -244,6 +244,7 @@ return  new Promise(function (resolve, reject) {
                    reject( error);
             }
             if(result){
+              console.log(result);
                     resolve(result);
             }
           });
