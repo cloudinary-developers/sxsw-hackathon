@@ -284,7 +284,7 @@ console.log(releaseid)
     
     var trackURLS =  data.tracks.track.map(a => release.image);
     
-    console.log(trackURLS); 
+    console.log('My list\n', trackURLS); 
     
     var public_id = data.tracks.track[0].title.replace(' ','_') + '_' + data.tracks.track[0].id;
      console.log('coverImageURL', coverImageURL, public_id); 
