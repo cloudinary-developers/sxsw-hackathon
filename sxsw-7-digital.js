@@ -285,8 +285,8 @@ console.log(releaseid)
      // res.send( data);   
       getThemes(coverImageURL, public_id)
       .then(function(imageData){
-          console.log(imageData); 
           data.tracks.track[0].cloudinary = imageData;
+          console.log(data); 
           res.send( data);   
         })
         .catch(function(error){
