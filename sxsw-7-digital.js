@@ -57,44 +57,6 @@ var apiContext = function (req, res, next) {
 app.use(apiContext)
 
 
-function getThemes(coverImageURL){
- 
- console.log('coverImageURL', coverImageURL);
- 
- var  uploadCoverImage = new Promise(function (resolve, reject) {
-  var url = coverImageURL || 'http://res.cloudinary.com/de-demo/video/upload/v1520429530/test-audio.mp3' ; 
-  var public_id =  parsePath(url).name;
-  
-        // explicit 
-        cloudinary.v2.uploader.upload(url, 
-              { 
-              public_id: public_id,  
-              type: "upload",
-              resource_type: "image", 
-              // raw_convert: "google_speech",
-              // notification_url: "https://cloudinary.auth0-extend.com/api/run/evangelism/cloudinary-webhook"
-              }, 
-          function(error, result) {
-            if(error){
-                   reject( error);
-            }
-            if(result){
-                    resolve(result);
-            }
-          });
-        });
-        
-        
-        uploadCoverImage().then(function(data){
-          console.log(data); 
-        })
-        .catch(function(error){
-           console.log(error); 
-        });
-        
-}
-
-
 
 var getSong = function(context, trackid){
   // For access to locker / subscription streaming without managed users you
@@ -258,6 +220,39 @@ const artistid = req.params.artistid || '14643';
    })
 });
 
+var getThemes = function(coverImageURL){
+
+ 
+ console.log('coverImageURL', coverImageURL);
+ 
+return  new Promise(function (resolve, reject) {
+  var url = coverImageURL || 'http://res.cloudinary.com/de-demo/video/upload/v1520429530/test-audio.mp3' ; 
+  var public_id =  parsePath(url).name;
+  
+        // explicit 
+        cloudinary.v2.uploader.upload(url, 
+              { 
+              public_id: public_id,  
+              type: "upload",
+              resource_type: "image", 
+              // raw_convert: "google_speech",
+              // notification_url: "https://cloudinary.auth0-extend.com/api/run/evangelism/cloudinary-webhook"
+              }, 
+          function(error, result) {
+            if(error){
+                   reject( error);
+            }
+            if(result){
+                    resolve(result);
+            }
+          });
+        });
+        
+        
+}
+
+
+
 
 // Get tracks by releaseID: 
 var getTracks = function(releaseid) {  
@@ -284,8 +279,18 @@ console.log(releaseid)
   .then(function(data){
     
     var coverImageURL = data.tracks.track[0].image;
-      getThemes(coverImageURL);
-        res.send( data);   
+      getThemes(coverImageURL)
+      .then(function(imageData){
+          console.log(imageData); 
+          data.cloudinary = imageData;
+          res.send( data);   
+        })
+        .catch(function(error){
+           console.log(error); 
+        });
+      
+      
+        
    }).catch(function(err){
       console.log('ERR:', err);
       res.send(err);
