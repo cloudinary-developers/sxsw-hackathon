@@ -57,7 +57,7 @@ var apiContext = function (req, res, next) {
 app.use(apiContext)
 
 
-var getThemes = function(coverImageURL){
+function getThemes(coverImageURL){
  
  console.log('coverImageURL', coverImageURL);
  
