@@ -147,7 +147,6 @@ app.get('/browse/:letter', function ( req, res) {
   
 app.get('/search/:query', function ( req, res) {
   
-  const context = req.webtaskContext;
   const query = req.params.query || 1;
  
   search(query).then(function(data){
