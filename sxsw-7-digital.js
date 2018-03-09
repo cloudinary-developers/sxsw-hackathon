@@ -291,10 +291,18 @@ console.log(releaseid)
   getTracks(releaseid)
   .then(function(data){
     console.log(data); 
-    var tags = "sxsw";
+    var tags = "sxsw,clouds";
     getImagesByTags(tags)
     .then(function(dataTags){
-    console.log('tags\n',dataTags);  
+      
+   var meta =   dataTags.resources.map(function(item){
+      var object = {};
+      object.url = item.secure_url;
+      object.public_id = item.public_id;
+        return object;
+      });
+     console.log('tags\n',dataTags);
+    console.log('meta\n',meta);  
     })
     .catch(function(error){
        console.log('error\n',error);
