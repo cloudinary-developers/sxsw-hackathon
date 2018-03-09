@@ -290,11 +290,11 @@ const releaseid = req.params.releaseid || '7456808';
 console.log(releaseid)
   getTracks(releaseid)
   .then(function(data){
-    console.log(data); 
+ //   console.log(data); 
     var tags = "clouds";
     getImagesByTags(tags)
     .then(function(dataTags){
-      console.log('tags\n',dataTags);
+ //     console.log('tags\n',dataTags);
    var meta =   dataTags.resources.map(function(item){
       var object = {};
       object.url = item.secure_url;
@@ -331,7 +331,7 @@ console.log(releaseid)
       return object;
     });
       
-    console.log('My list\n', trackData); 
+//    console.log('My list\n', trackData); 
     
     // // Save image
     // var coverImageURL = data.tracks.track[0].release.image;
