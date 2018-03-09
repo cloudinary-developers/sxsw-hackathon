@@ -35,9 +35,9 @@ module.exports = function(context, req ,res) {
     }
     
     
-   // var url = cloudinary.url(public_id + ".jpg",{overlay:overlay,effect: effect + style_strength, sign_url: true});
-
-   // request(url).pipe(res);
+    var url = cloudinary.url(public_id + ".jpg",{overlay:overlay,effect: effect + style_strength, sign_url: true});
+     console.log(url);
+    request(url).pipe(res);
     
     //Alternatively send as HTML within an image tag element.
     // var image = cloudinary.url(public_id + ".jpg",{overlay:overlay,effect: effect + style_strength, sign_url: true}); 
