@@ -304,15 +304,15 @@ console.log(releaseid)
      
    // console.log('meta\n',meta);  
     
-       var results =   data.tracks.track.forEach(function(item, index){
+       data.tracks.track =   data.tracks.track.forEach(function(item, index){
             item.cloudinary = { meta:meta , tag:'clouds'};
             console.log(item,index);
          return item;
       });
       
      // data.tracks.track[0].cloudinary = {meta: };
-      console.log(results);
-      res.send( results);   
+      console.log('data enhanced \n',data);
+      res.send( data);   
     })
     .catch(function(error){
        res.send(error);
