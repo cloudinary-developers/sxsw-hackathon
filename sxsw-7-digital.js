@@ -282,20 +282,21 @@ console.log(releaseid)
     console.log(data); 
     var coverImageURL = data.tracks.track[0].release.image;
     
-    var trackURLS =  data.tracks.track.map(function(item){
+    var trackData =  data.tracks.track.map(function(item){
       var object = {};
       object.coverImageURL = item.release.image;
       object.id = item.id;
       object.title = item.title;
       object.isrc = item.isrc;
       object.trackNumber = item.trackNumber;
+      object.artist = item.artist;
       
       object.slug = item.release.slug;
       return object;
     });
       
     
-    console.log('My list\n', trackURLS); 
+    console.log('My list\n', trackData); 
     
     var public_id = data.tracks.track[0].title.replace(' ','_') + '_' + data.tracks.track[0].id;
      console.log('coverImageURL', coverImageURL, public_id); 
