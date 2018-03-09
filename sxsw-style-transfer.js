@@ -36,8 +36,8 @@ module.exports = function(context, req ,res) {
     const title = "The Breeders";
     const sfx = overlay + `,text:Arial_80:${title}`;
     
-    var url = cloudinary.url(public_id + ".jpg",{overlay:overlay,effect: effect + style_strength, sign_url: true});
-    url = url.replace(overlay, overlay + transformation);
+    var url = cloudinary.url(public_id + ".jpg",{overlay:sfx,effect: effect + style_strength, sign_url: true});
+    
      console.log(url);
     request(url).pipe(res);
     
