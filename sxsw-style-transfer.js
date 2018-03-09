@@ -34,7 +34,7 @@ module.exports = function(context, req ,res) {
       style_strength = ":preserve_color:" + strength || "";
     }
     const title = "The Breeders";
-    const sfx = overlay + `,text:Arial_80:${title}`;
+    const sfx = overlay + `,l_text:Arial_80:${title}`;
     
     var url = cloudinary.url(public_id + ".jpg",{overlay:sfx,effect: effect + style_strength, sign_url: true});
     
