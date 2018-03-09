@@ -302,9 +302,10 @@ console.log(releaseid)
         return object;
       });
      
-    console.log('meta\n',meta);  
+   // console.log('meta\n',meta);  
     
        var results =   data.tracks.track.forEach(function(item, index){
+         console.log(item,index);
             item.cloudinary = { meta:meta , tag:'clouds'};
          return item;
       });
