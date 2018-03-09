@@ -285,8 +285,8 @@ console.log(releaseid)
     var trackURLS =  data.tracks.track.map(function(item){
       var object = {};
       object.coverImageURL = item.release.image;
-      object.id = item.release.id;
-      object.title = item.release.title;
+      object.id = item.id;
+      object.title = item.title;
       object.isrc = item.isrc;
       object.trackNumber = item.trackNumber;
       
