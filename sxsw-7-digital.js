@@ -293,9 +293,9 @@ console.log(releaseid)
     console.log(data); 
     var tags = "sxsw";
     getImagesByTags(tags)
-    .then(function(dataTags){}
-    console.log('tags\n',dataTags);
-    )
+    .then(function(dataTags){
+    console.log('tags\n',dataTags);  
+    })
     .catch(function(error){
        console.log('error\n',error);
     });
