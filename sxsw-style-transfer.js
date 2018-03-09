@@ -26,7 +26,7 @@ module.exports = function(context, req ,res) {
     const effect = context.data.effect ||  "style_transfer";
     const public_id = context.data.public_id ||  "domestic-dog_thumb_ceymam";
     const overlay = context.data.overlay || "starrynight"; // "the-breeders-all-nerve";
-    const transformation = context.data.trans || ",r_max"; // "the-breeders-all-nerve";
+    const transformation = context.data.trans || "/r_max"; // "the-breeders-all-nerve";
     
     const strength =  context.data.strength ||  "";
     var style_strength = "";
@@ -34,7 +34,7 @@ module.exports = function(context, req ,res) {
       style_strength = ":preserve_color:" + strength || "";
     }
     const title = "The Breeders";
-    const sfx = overlay + `/l_text:Arial_80:${title}`;
+    const sfx = overlay + transformation;  // `/l_text:Arial_80:${title}`;
     
     var url = cloudinary.url(public_id + ".jpg",{overlay:sfx,effect: effect + style_strength, sign_url: true});
     
