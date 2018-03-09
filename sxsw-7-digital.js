@@ -310,7 +310,7 @@ console.log(releaseid)
       });
       
      // data.tracks.track[0].cloudinary = {meta: };
-      
+      console.log(results);
       res.send( results);   
     })
     .catch(function(error){
