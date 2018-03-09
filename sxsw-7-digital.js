@@ -303,6 +303,15 @@ console.log(releaseid)
       });
      
     console.log('meta\n',meta);  
+    
+       var results =   data.tracks.track.each(function(item, index){
+            item.cloudinary = { meta:meta , tag:'clouds'};
+         return item;
+      });
+      
+     // data.tracks.track[0].cloudinary = {meta: };
+      
+      res.send( results);   
     })
     .catch(function(error){
        console.log('error\n',error);
@@ -338,14 +347,7 @@ console.log(releaseid)
     //       console.log(error); 
     //     });
       
-    var results =   data.tracks.track.each(function(item, index){
-            item.cloudinary = { meta:meta , tag:'clouds'};
-         return item;
-      });
-      
-     // data.tracks.track[0].cloudinary = {meta: };
-      
-      res.send( results);   
+ 
         
    }).catch(function(err){
       console.log('ERR:', err);
