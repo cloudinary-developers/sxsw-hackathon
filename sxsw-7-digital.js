@@ -308,7 +308,7 @@ console.log(releaseid)
        const newTracks =   data.tracks.track.forEach(function(item, index){
             item.cloudinary = { meta:meta , tag:'clouds'};
             console.log(item,index);
-         return ite
+         return item
       });
       data.tracks.track =  data.tracks.track; 
      // data.tracks.track[0].cloudinary = {meta: };
