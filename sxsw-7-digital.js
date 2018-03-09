@@ -305,8 +305,8 @@ console.log(releaseid)
    // console.log('meta\n',meta);  
     
        var results =   data.tracks.track.forEach(function(item, index){
-         console.log(item,index);
             item.cloudinary = { meta:meta , tag:'clouds'};
+            console.log(item,index);
          return item;
       });
       
