@@ -221,10 +221,6 @@ const artistid = req.params.artistid || '14643';
 });
 
 var getThemes = function(coverImageURL, public_id){
-
- 
- console.log('coverImageURL', coverImageURL);
- 
 return  new Promise(function (resolve, reject) {
   var url = coverImageURL || 'http://res.cloudinary.com/de-demo/video/upload/v1520429530/test-audio.mp3' ; 
    
@@ -249,10 +245,25 @@ return  new Promise(function (resolve, reject) {
             }
           });
         });
-        
-        
 }
 
+
+
+var getImagesByTags = function(tags){
+return  new Promise(function (resolve, reject) {
+           cloudinary.v2.api.resources_by_tag(tags, 
+           function(error, result){
+             if(error){
+               reject(error);
+             }
+             if(result){
+               console.log(result);
+               resolve(result);
+             }
+           });
+
+        });
+}
 
 
 
@@ -280,7 +291,14 @@ console.log(releaseid)
   getTracks(releaseid)
   .then(function(data){
     console.log(data); 
-    var coverImageURL = data.tracks.track[0].release.image;
+    var tags = "sxsw";
+    getImagesByTags(tags)
+    .then(function(dataTags){}
+    console.log('tags\n',dataTags);
+    )
+    .catch(function(error){
+      
+    });
     
     var trackData =  data.tracks.track.map(function(item){
       var object = {};
@@ -295,9 +313,10 @@ console.log(releaseid)
       return object;
     });
       
-    
     console.log('My list\n', trackData); 
     
+    // Save image
+    var coverImageURL = data.tracks.track[0].release.image;
     var public_id = data.tracks.track[0].title.replace(' ','_') + '_' + data.tracks.track[0].id;
      console.log('coverImageURL', coverImageURL, public_id); 
      // res.send( data);   
