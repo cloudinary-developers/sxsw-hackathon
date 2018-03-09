@@ -36,7 +36,7 @@ module.exports = function(context, req ,res) {
     
     
     var url = cloudinary.url(public_id + ".jpg",{overlay:overlay,effect: effect + style_strength, sign_url: true});
-    url = url.replace(overlay, overlay + transformation');
+    url = url.replace(overlay, overlay + transformation);
      console.log(url);
     request(url).pipe(res);
     
