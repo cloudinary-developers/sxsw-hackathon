@@ -323,22 +323,29 @@ console.log(releaseid)
       
     console.log('My list\n', trackData); 
     
-    // Save image
-    var coverImageURL = data.tracks.track[0].release.image;
-    var public_id = data.tracks.track[0].title.replace(' ','_') + '_' + data.tracks.track[0].id;
-     console.log('coverImageURL', coverImageURL, public_id); 
-     // res.send( data);   
-      getThemes(coverImageURL, public_id)
-      .then(function(imageData){
-          data.tracks.track[0].cloudinary = imageData;
-          console.log(data); 
-          res.send( data);   
-        })
-        .catch(function(error){
-          console.log(error); 
-        });
+    // // Save image
+    // var coverImageURL = data.tracks.track[0].release.image;
+    // var public_id = data.tracks.track[0].title.replace(' ','_') + '_' + data.tracks.track[0].id;
+    // console.log('coverImageURL', coverImageURL, public_id); 
+    // // res.send( data);   
+    //   getThemes(coverImageURL, public_id)
+    //   .then(function(imageData){
+    //       data.tracks.track[0].cloudinary = imageData;
+    //       console.log(data); 
+    //       res.send( data);   
+    //     })
+    //     .catch(function(error){
+    //       console.log(error); 
+    //     });
       
+    var results =   data.tracks.track.each(function(item, index){
+            item.cloudinary = { meta:meta , tag:'clouds'};
+         return item;
+      });
       
+     // data.tracks.track[0].cloudinary = {meta: };
+      
+      res.send( results);   
         
    }).catch(function(err){
       console.log('ERR:', err);
