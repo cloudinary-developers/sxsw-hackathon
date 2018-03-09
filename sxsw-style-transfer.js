@@ -12,7 +12,8 @@ module.exports = function(context, req ,res) {
   
   if(context.secrets.WT_API_KEY != context.data.auth_key){
     const message = 'You are not authorized to use this api without an auth_key';
-    return  cb(null, message);
+      res.writeHead(200, { 'Content-Type': 'text/html '});
+      res.end(message);
   }
   
     // config cloudinary  
