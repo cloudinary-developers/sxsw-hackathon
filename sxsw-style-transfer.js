@@ -26,7 +26,7 @@ module.exports = function(context, req ,res) {
     const effect = context.data.effect ||  "style_transfer";
     const public_id = context.data.public_id ||  "domestic-dog_thumb_ceymam";
     const overlay = context.data.overlay || "starrynight"; // "the-breeders-all-nerve";
-    const transformation = context.data.trans || "/r_max/"; // "the-breeders-all-nerve";
+    const transformation = context.data.trans || "/r_max,"; // "the-breeders-all-nerve";
     
     const strength =  context.data.strength ||  "";
     var style_strength = "";
