@@ -251,7 +251,7 @@ return  new Promise(function (resolve, reject) {
 
 var getImagesByTags = function(tags){
 return  new Promise(function (resolve, reject) {
-           cloudinary.v2.api.resources_by_tag(tags, 
+           cloudinary.v2.api.resources_by_tag(tags,{max_results:100} 
            function(error, result){
              if(error){
                reject(error);
