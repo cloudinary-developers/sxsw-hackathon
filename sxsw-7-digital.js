@@ -314,6 +314,7 @@ console.log(releaseid)
       res.send( results);   
     })
     .catch(function(error){
+       res.send(error);
        console.log('error\n',error);
     });
     
