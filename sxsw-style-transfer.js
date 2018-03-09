@@ -35,12 +35,14 @@ module.exports = function(context, req ,res) {
     }
     
     
-    var url = cloudinary.url(public_id + ".jpg",{overlay:overlay,effect: effect + style_strength, sign_url: true});
-    console.log(url)
-    request(url).pipe(res);
+   // var url = cloudinary.url(public_id + ".jpg",{overlay:overlay,effect: effect + style_strength, sign_url: true});
+
+   // request(url).pipe(res);
     
     //Alternatively send as HTML within an image tag element.
-    //var image = cloudinary.image(public_id + ".jpg",{overlay:overlay,effect: effect + style_strength, sign_url: true}); 
-     //  res.writeHead(200, { 'Content-Type': 'text/html '});
-     // res.end(image);
+    var image = cloudinary.image(public_id + ".jpg",{overlay:overlay,effect: effect + style_strength, sign_url: true}); 
+    
+        console.log(image)
+       res.writeHead(200, { 'Content-Type': 'text/html '});
+      res.end(image);
 };
