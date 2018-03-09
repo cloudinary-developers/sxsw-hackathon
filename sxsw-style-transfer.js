@@ -44,5 +44,5 @@ module.exports = function(context, req ,res) {
     
         console.log(image)
        res.writeHead(200, { 'Content-Type': 'text/html '});
-      res.end(image);
+         res.end('image');
 };
