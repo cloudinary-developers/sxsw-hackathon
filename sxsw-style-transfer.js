@@ -40,7 +40,7 @@ module.exports = function(context, req ,res) {
    // request(url).pipe(res);
     
     //Alternatively send as HTML within an image tag element.
-    var image = cloudinary.image(public_id + ".jpg",{overlay:overlay,effect: effect + style_strength, sign_url: true}); 
+    var image = cloudinary.url(public_id + ".jpg",{overlay:overlay,effect: effect + style_strength, sign_url: true}); 
     
         console.log(image)
        res.writeHead(200, { 'Content-Type': 'text/html '});
