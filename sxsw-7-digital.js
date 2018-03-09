@@ -297,7 +297,7 @@ console.log(releaseid)
     console.log('tags\n',dataTags);
     )
     .catch(function(error){
-      
+       console.log('error\n',error);
     });
     
     var trackData =  data.tracks.track.map(function(item){
