@@ -68,10 +68,8 @@ app.use(apiContext)
 
 var TestMM = function(){
   
-      const lyrics = musixmatch.getLyricsMatcher({
-        q_track: 'sick sick sick',
-         q_artist: 'queens of the stone age',
-      }).then(function(data){
+     music.track({track_id:15445219})
+     .then(function(data){
         return data;
       }).catch(function(error){
         return error;
