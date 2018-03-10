@@ -6,6 +6,7 @@ const request = require('request');
 const parsePath = require('parse-filepath');
 
 const axios = require('axios');
+const JSONP = require('node-jsonp');
 
 
 
@@ -76,21 +77,27 @@ var TestMM = function(){
     apikey: musicmatch_api_key
   };
 
-  axios({
-    method:'get',
-    url:url,
-    data: data,
-    responseType:'json'
-    })
-    .then(function(response) {
-      return response;
-    }).catch(function(error){
-        return error;
+
+ JSONP(url,data,'callback',function(json){
+     console.log(json)
+       return json;
     });
     
-    function callback (response){
-       return response;
-    }
+  // axios({
+  //   method:'get',
+  //   url:url,
+  //   data: data,
+  //   responseType:'json'
+  //   })
+  //   .then(function(response) {
+  //     return response;
+  //   }).catch(function(error){
+  //       return error;
+  //   });
+    
+  //   function callback (response){
+  //     return response;
+  //   }
   
 }
 
