@@ -69,7 +69,8 @@ app.use(apiContext)
 var TestMM = function(){
   const url = 'https://api.musixmatch.com/ws/1.1/matcher.lyrics.get';
   const data = {
-    format:'json',
+    format:'jsonp',
+    callback: callback,
     q_track: 'all nerver',
     q_artist: 'the Breeders',
     apikey: musicmatch_api_key
@@ -86,6 +87,10 @@ var TestMM = function(){
     }).catch(function(error){
         return error;
     });
+    
+    function callback (response){
+       return response;
+    }
   
 }
 
