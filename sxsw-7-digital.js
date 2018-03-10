@@ -29,7 +29,7 @@ var apiContext = function (req, res, next) {
   const page = context.data.page || 1;
   const pageSize = context.data.pageSize || 100;
   
-  const musixmatch = new Musixmatch(/* YOUR API KEY */)
+  const musixmatch = new Musixmatch(context.secrets.musix_match_api);
   
   consumerkey = context.secrets.oauth_consumer_key;
   consumersecret =  context.secrets.oauth_consumer_secret;
