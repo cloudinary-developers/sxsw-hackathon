@@ -65,13 +65,25 @@ var apiContext = function (req, res, next) {
 app.use(apiContext)
 
 var TestMM = function(){
-  
-     music.track({track_id:15445219})
-     .then(function(data){
-        return data;
-      }).catch(function(error){
+  const url = 'https://api.musixmatch.com/ws/1.1/matcher.lyrics.get';
+  const data = {
+    format:'json',
+    q_track: 'all nerver',
+    q_artist: 'the Breeders',
+    apikey: musicmatch_api_key
+  };
+
+  axios({
+    method:'get',
+    url:url,
+    data: data,
+    responseType:'json'
+    })
+    .then(function(response) {
+      return response;
+    }).catch(function(error){
         return error;
-      });
+    });
   
 }
 
