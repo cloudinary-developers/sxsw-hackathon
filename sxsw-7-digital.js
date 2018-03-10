@@ -29,7 +29,6 @@ var apiContext = function (req, res, next) {
   const page = context.data.page || 1;
   const pageSize = context.data.pageSize || 100;
   
-  musixmatch = new Musixmatch(context.secrets.musix_match_api);
   const musix_match_api = context.secrets.musix_match_api;
   music = require('musicmatch')({apikey:musix_match_api});
   
