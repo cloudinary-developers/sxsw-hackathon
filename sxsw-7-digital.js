@@ -5,12 +5,12 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const parsePath = require('parse-filepath');
 
-const musicmatch = require('musicmatch');
+
 
 
 var app = express();
 
-var musixmatch, api, artists, tracks, releases , consumerkey, consumersecret;
+var music, api, artists, tracks, releases , consumerkey, consumersecret;
 
 app.use(bodyParser.json());
 
@@ -30,7 +30,11 @@ var apiContext = function (req, res, next) {
   const pageSize = context.data.pageSize || 100;
   
   musixmatch = new Musixmatch(context.secrets.musix_match_api);
-  music = require('musicmatch')({usertoken:"",format:"",appid:""});
+  const musix_match_api = context.secrets.musix_match_api;
+  music = require('musicmatch')({apikey:musix_match_api});
+  
+  
+//'https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?format=json&q_track=all%20nerve&q_artist=the%20breeders&apikey=e85afd885a384e43b37e438f5df65a98'
 
   
   consumerkey = context.secrets.oauth_consumer_key;
