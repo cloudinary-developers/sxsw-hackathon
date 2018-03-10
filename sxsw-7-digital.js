@@ -60,6 +60,16 @@ var apiContext = function (req, res, next) {
 // Use our API Middleware
 app.use(apiContext)
 
+var TestMM = function(){
+  return new Promise(function (resolve, reject) {
+      // do something
+      resolve(data)
+      // or send error
+      reject(error)
+  })
+  
+}
+
 
 
 var getSong = function(context, trackid){
