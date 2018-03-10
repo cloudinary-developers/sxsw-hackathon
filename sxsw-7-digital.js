@@ -70,14 +70,13 @@ var TestMM = function(){
       }).catch(function(error){
         reject(error);
       });
-
   })
   
 }
 
-app.get('/', function (req, res) {
+app.get('/test', function (req, res) {
   var results = TestMM();
-  res.sendStatus(200);
+    res.send( results);   
 });
 
 
