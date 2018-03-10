@@ -4,8 +4,8 @@ const Webtask    = require('webtask-tools');
 const bodyParser = require('body-parser');
 const request = require('request');
 const parsePath = require('parse-filepath');
-const Musixmatch = require('musixmatch-node')
 
+const musicmatch = require('musicmatch');
 
 
 var app = express();
@@ -30,6 +30,8 @@ var apiContext = function (req, res, next) {
   const pageSize = context.data.pageSize || 100;
   
   musixmatch = new Musixmatch(context.secrets.musix_match_api);
+  music = require('musicmatch')({usertoken:"",format:"",appid:""});
+
   
   consumerkey = context.secrets.oauth_consumer_key;
   consumersecret =  context.secrets.oauth_consumer_secret;
