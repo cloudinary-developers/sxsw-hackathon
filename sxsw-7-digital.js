@@ -78,27 +78,10 @@ var TestMM = function(){
   };
 
 
- JSONP(url,data,'callback',function(json){
-     console.log(json)
-       return json;
+ JSONP(url,data,'callback',function(response){
+     console.log(response);
+     return response;
     });
-    
-  // axios({
-  //   method:'get',
-  //   url:url,
-  //   data: data,
-  //   responseType:'json'
-  //   })
-  //   .then(function(response) {
-  //     return response;
-  //   }).catch(function(error){
-  //       return error;
-  //   });
-    
-  //   function callback (response){
-  //     return response;
-  //   }
-  
 }
 
 app.get('/test', function (req, res) {
