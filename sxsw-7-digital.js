@@ -75,6 +75,7 @@ var TestMM = function(){
   
 }
 
+TestMM();
 
 
 var getSong = function(context, trackid){
