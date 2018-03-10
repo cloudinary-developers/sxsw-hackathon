@@ -75,7 +75,12 @@ var TestMM = function(){
   
 }
 
-TestMM();
+app.get('/', function (req, res) {
+  var results = TestMM();
+  res.sendStatus(200);
+});
+
+
 
 
 var getSong = function(context, trackid){
