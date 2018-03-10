@@ -10,7 +10,7 @@ const parsePath = require('parse-filepath');
 
 var app = express();
 
-var music, api, artists, tracks, releases , consumerkey, consumersecret;
+var musicmatch_api_key, api, artists, tracks, releases , consumerkey, consumersecret;
 
 app.use(bodyParser.json());
 
@@ -29,11 +29,10 @@ var apiContext = function (req, res, next) {
   const page = context.data.page || 1;
   const pageSize = context.data.pageSize || 100;
   
-  const musix_match_api = context.secrets.musix_match_api;
-  music = require('musicmatch')({apikey:musix_match_api});
+  musicmatch_api_key = context.secrets.musicmatch_api_key;
   
   
-//'https://api.musixmatch.com/ws/1.1/matcher.lyrics.get?format=json&q_track=all%20nerve&q_artist=the%20breeders&apikey=e85afd885a384e43b37e438f5df65a98'
+
 
   
   consumerkey = context.secrets.oauth_consumer_key;
