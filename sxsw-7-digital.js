@@ -68,6 +68,11 @@ var apiContext = function (req, res, next) {
 app.use(apiContext)
 
 var TestMM = function(){
+  
+}
+
+app.get('/test', function (req, res) {
+  
   const url = 'https://api.musixmatch.com/ws/1.1/matcher.lyrics.get';
   const data = {
     format:'jsonp',
@@ -80,13 +85,9 @@ var TestMM = function(){
 
  JSONP(url,data,'callback',function(response){
      console.log(response);
-     return response;
+     res.send( response);  
     });
-}
-
-app.get('/test', function (req, res) {
-  var results = TestMM();
-    res.send( results);   
+     
 });
 
 
