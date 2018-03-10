@@ -84,9 +84,9 @@ app.get('/test', function (req, res) {
 
 
  JSONP(url,data,'callback',function(response){
-     console.log(response.body);
-     const lyrics = response.body;
-     res.send( lyrics);  
+     console.log(response);
+     const results = JSON.parse(response.body);
+     res.send( results);  
     });
      
 });
