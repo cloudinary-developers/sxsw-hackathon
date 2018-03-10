@@ -62,14 +62,14 @@ app.use(apiContext)
 
 var TestMM = function(){
   return new Promise(function (resolve, reject) {
-      // do something
-      // resolve(data)
-      // // or send error
-      // reject(error)
       const lyrics = musixmatch.getLyricsMatcher({
         q_track: 'sick sick sick',
          q_artist: 'queens of the stone age',
-      })
+      }).then(function(data){
+        resolve(data)
+      }).catch(function(error){
+        reject(error);
+      });
 
   })
   
