@@ -67,34 +67,66 @@ var apiContext = function (req, res, next) {
 // Use our API Middleware
 app.use(apiContext)
 
-var TestMM = function(){
+var getLyrics = function(data){
+  
+  const url = 'https://api.musixmatch.com/ws/1.1/matcher.lyrics.get';
+  return new Promise(function (resolve, reject) {
+  
+  JSONP(url,data,'callback',function(response){
+     console.log(response.message.body);
+     const lyrics =  response.message.body.lyrics;
+       if(lyrics){
+         resolve(lyrics);  
+       }else{
+         reject("There was an error getting lyrics");
+       }
+    });
+    
+  });
   
 }
 
 app.get('/lyrics', function (req, res) {
   
-  const q_artist = req.params.artist  || 'The Breeders';  // /lyrics/The Breeders/
-  const q_track = req.params.track  || 'The Breeders';  // /lyrics/The Breeders/All Nerve/
-  const track_isrc = req.params.isrc  || 'The Breeders';  // /lyrics/The Breeders/All Nerve/
-  
+  var q_artist = req.params.artist  || 'The Breeders';  // /lyrics/The Breeders/
+  var q_track = req.params.track  || 'The Breeders';  // /lyrics/The Breeders/All Nerve/
+
   const context = req.webtaskContext;
+   context.data.q_artist = q_artist;
+   context.data.q_track = q_track;
+   
+  const track_isrc = context.data.isrc || 12345;
+  
+  
+  if(track_isrc){
+    q_artist = "";
+    q_track = ""
+  }
   
   const url = 'https://api.musixmatch.com/ws/1.1/matcher.lyrics.get';
   const data = {
     format:'jsonp',
     callback: 'callback',
-    q_track: 'all nerver',
-    q_artist: 'the Breeders',
-    track_isrc: '',
+    q_track: q_track,
+    q_artist: q_artist,
+    track_isrc: track_isrc,
     apikey: musicmatch_api_key
   };
 
+   
+   getLyrics(data)
+   .then(function(lyrics){
+          res.send(lyrics);
+   })
+   .catch(function(error){
+          res.send(error);
+   });
 
- JSONP(url,data,'callback',function(response){
-     console.log(response.message.body);
-     const lyrics =  response.message.body.lyrics;
-     res.send(lyrics);  
-    });
+// JSONP(url,data,'callback',function(response){
+//     console.log(response.message.body);
+//     const lyrics =  response.message.body.lyrics;
+//     res.send(lyrics);  
+//     });
      
 });
 
