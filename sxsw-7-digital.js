@@ -71,7 +71,13 @@ var TestMM = function(){
   
 }
 
-app.get('/test', function (req, res) {
+app.get('/lyrics', function (req, res) {
+  
+  const q_artist = req.params.artist  || 'The Breeders';  // /lyrics/The Breeders/
+  const q_track = req.params.track  || 'The Breeders';  // /lyrics/The Breeders/All Nerve/
+  const track_isrc = req.params.isrc  || 'The Breeders';  // /lyrics/The Breeders/All Nerve/
+  
+  const context = req.webtaskContext;
   
   const url = 'https://api.musixmatch.com/ws/1.1/matcher.lyrics.get';
   const data = {
