@@ -121,13 +121,6 @@ app.get('/lyrics', function (req, res) {
    .catch(function(error){
           res.send(error);
    });
-
-// JSONP(url,data,'callback',function(response){
-//     console.log(response.message.body);
-//     const lyrics =  response.message.body.lyrics;
-//     res.send(lyrics);  
-//     });
-     
 });
 
 
