@@ -67,7 +67,16 @@ var apiContext = function (req, res, next) {
 // Use our API Middleware
 app.use(apiContext)
 
-var getLyrics = function(data){
+var getLyrics = function(params){
+  
+  const data = {
+    format:'jsonp',
+    callback: 'callback',
+    q_track: params.q_track,
+    q_artist: params.q_artist,
+    track_isrc: params.track_isrc,
+    apikey: musicmatch_api_key
+  };
   
   const url = 'https://api.musixmatch.com/ws/1.1/matcher.lyrics.get';
   return new Promise(function (resolve, reject) {
@@ -98,15 +107,11 @@ app.get('/lyrics', function (req, res) {
       q_track = ""
     }
   
-  const url = 'https://api.musixmatch.com/ws/1.1/matcher.lyrics.get';
   const data = {
-    format:'jsonp',
-    callback: 'callback',
     q_track: q_track,
     q_artist: q_artist,
     track_isrc: track_isrc,
-    apikey: musicmatch_api_key
-  };
+   };
 
    getLyrics(data)
    .then(function(lyrics){
