@@ -90,15 +90,13 @@ app.get('/lyrics', function (req, res) {
   
   var q_artist = req.params.artist  || 'The Breeders';  // /lyrics/The Breeders/
   var q_track = req.params.track  || 'Spacewoman';  // /lyrics/The Breeders/All Nerve/
-
   const context = req.webtaskContext;
   const track_isrc = context.data.isrc || 'GBAFL1700342';  //?Spacewoman
   
-  
-  if(track_isrc){
-    q_artist = "";
-    q_track = ""
-  }
+    if(track_isrc){
+      q_artist = "";
+      q_track = ""
+    }
   
   const url = 'https://api.musixmatch.com/ws/1.1/matcher.lyrics.get';
   const data = {
@@ -110,7 +108,6 @@ app.get('/lyrics', function (req, res) {
     apikey: musicmatch_api_key
   };
 
-   
    getLyrics(data)
    .then(function(lyrics){
           res.send(lyrics);
