@@ -92,9 +92,6 @@ app.get('/lyrics', function (req, res) {
   var q_track = req.params.track  || 'Spacewoman';  // /lyrics/The Breeders/All Nerve/
 
   const context = req.webtaskContext;
-   context.data.q_artist = q_artist;
-   context.data.q_track = q_track;
-   
   const track_isrc = context.data.isrc || 'GBAFL1700342';  //?Spacewoman
   
   
