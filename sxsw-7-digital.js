@@ -363,27 +363,10 @@ var getTracks = function(releaseid) {
 app.get('/tracks/:releaseid', function ( req, res) {
   
 const releaseid = req.params.releaseid || '7456808';
-const lyrics ;
 console.log(releaseid)
   getTracks(releaseid)
   .then(function(data){
-   console.log(data); 
- 
-  // const data = {
-  //   q_track: q_track,
-  //   q_artist: q_artist,
-  //   track_isrc: track_isrc,
-  // };
-
-  // getLyrics(data)
-  // .then(function(lyricsData){
-  //       lyrics = lyricsData.lyrics_foo;
-  // })
-  // .catch(function(error){
-  //         res.send(error);
-  // });
- 
- 
+ //   console.log(data); 
     var tags = "clouds";
     getImagesByTags(tags)
     .then(function(dataTags){
@@ -396,12 +379,15 @@ console.log(releaseid)
       });
      
    // console.log('meta\n',meta);  
+    
+    
        const newTracks =   data.tracks.track.forEach(function(item, index){
             item.cloudinary = { meta:meta , tag:'clouds'};
             console.log(item,index);
          return item
       });
       data.tracks.track =  data.tracks.track; 
+     // data.tracks.track[0].cloudinary = {meta: };
       console.log('data enhanced \n',data);
       res.send( data);   
     })
