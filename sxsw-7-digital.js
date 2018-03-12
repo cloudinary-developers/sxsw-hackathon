@@ -7,7 +7,7 @@ const parsePath = require('parse-filepath');
 
 const axios = require('axios');
 const JSONP = require('node-jsonp');
-
+var Algorithmia = require('algorithmia');
 
 
 
