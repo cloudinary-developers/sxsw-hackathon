@@ -68,7 +68,7 @@ var apiContext = function (req, res, next) {
 app.use(apiContext)
 
 
-var analyiseLyrics(lyrics){
+var analyiseLyrics = function(lyrics){
   
 Algorithmia.client("simEzw9S/E6t4h5nYL3TLYyACn61")
     .algo("nlp/AutoTag/1.0.1")
