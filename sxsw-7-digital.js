@@ -67,6 +67,18 @@ var apiContext = function (req, res, next) {
 // Use our API Middleware
 app.use(apiContext)
 
+
+var analyiseLyrics(lyrics){
+  
+Algorithmia.client("simEzw9S/E6t4h5nYL3TLYyACn61")
+    .algo("nlp/AutoTag/1.0.1")
+    .pipe(lyrics)
+    .then(function(response) {
+        console.log(response.get());
+    });
+  
+}
+
 var getLyrics = function(params){
   
   const data = {
