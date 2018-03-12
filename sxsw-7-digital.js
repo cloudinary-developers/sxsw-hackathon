@@ -46,7 +46,7 @@ var apiContext = function (req, res, next) {
 	  consumerkey: context.secrets.oauth_consumer_key,
 	  consumersecret: context.secrets.oauth_consumer_secret,
 	  defaultParams: { 
-	    //  country: 'GB', 
+	      country: 'GB', 
         shopId: context.secrets.shop_id,
 	      usageTypes: 'adsupportedstreaming',  
 	      pageSize: pageSize, 
