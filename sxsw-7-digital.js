@@ -291,7 +291,6 @@ var getThemes = function(coverImageURL, public_id){
 return  new Promise(function (resolve, reject) {
   var url = coverImageURL || 'http://res.cloudinary.com/de-demo/video/upload/v1520429530/test-audio.mp3' ; 
    
-  
         // uses upload preset:  https://cloudinary.com/console/settings/upload
         cloudinary.v2.uploader.upload(url, 
               { 
