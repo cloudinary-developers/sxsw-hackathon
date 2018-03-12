@@ -369,19 +369,19 @@ console.log(releaseid)
   .then(function(data){
    console.log(data); 
  
-  const data = {
-    q_track: q_track,
-    q_artist: q_artist,
-    track_isrc: track_isrc,
-   };
+  // const data = {
+  //   q_track: q_track,
+  //   q_artist: q_artist,
+  //   track_isrc: track_isrc,
+  // };
 
-   getLyrics(data)
-   .then(function(lyricsData){
-         lyrics = lyricsData.lyrics_foo;
-   })
-   .catch(function(error){
-          res.send(error);
-   });
+  // getLyrics(data)
+  // .then(function(lyricsData){
+  //       lyrics = lyricsData.lyrics_foo;
+  // })
+  // .catch(function(error){
+  //         res.send(error);
+  // });
  
  
     var tags = "clouds";
