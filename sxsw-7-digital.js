@@ -193,7 +193,6 @@ var getClip = function(trackid){
       const oauth = new api.OAuth();
       var previewUrl = oauth.sign(clipUrl);
        if(previewUrl){
-          console.log(previewUrl)
           resolve({ url:previewUrl });
        }else{
           reject('we had an error');
