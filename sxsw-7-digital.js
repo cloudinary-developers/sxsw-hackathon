@@ -377,8 +377,20 @@ console.log(releaseid)
           .then(function(lyrics){
               console.log(lyrics);
                lyrics.push(lyrics);
-               
-                //   console.log(data); 
+            })
+           .catch(function(error){
+                 console.log('error\n',error);
+           });
+      });
+     
+    
+    
+
+   
+    
+    
+    
+ //   console.log(data); 
     var tags = "clouds";
     getImagesByTags(tags)
     .then(function(dataTags){
@@ -408,22 +420,6 @@ console.log(releaseid)
        res.send(error);
        console.log('error\n',error);
     });
-               
-               
-            })
-           .catch(function(error){
-                 console.log('error\n',error);
-           });
-      });
-     
-    
-    
-
-   
-    
-    
-    
-
     
     // var trackData =  data.tracks.track.map(function(item){
     //   var object = {};
