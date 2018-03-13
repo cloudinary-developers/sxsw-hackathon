@@ -302,7 +302,7 @@ const artistid = req.params.artistid || '14643';
 
 // Save Cover Image 
 
-var saveCoverImage = function(coverImageURL, public_id){
+var uploadImage = function(coverImageURL, public_id){
 return  new Promise(function (resolve, reject) {
   var url = coverImageURL || 'http://res.cloudinary.com/de-demo/video/upload/v1520429530/test-audio.mp3' ; 
    
@@ -330,7 +330,10 @@ return  new Promise(function (resolve, reject) {
 app.get('/upload/:public_id/?:url', function ( req, res) {
 const url = req.params.url || 'http://artwork-cdn.7static.com/static/img/artistimages/00/000/113/0000011319_300.jpg';
 const public_id = req.params.public_id || 'Cyndi_Lauper';
-  saveCoverImage(url,public_id)
+
+console.log(url, public_id);
+
+  uploadImage(url,public_id)
   .then(function(data){
         res.send( data);   
    }).catch(function(err){
