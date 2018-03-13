@@ -408,7 +408,7 @@ var lyrics = [];
     
        const newTracks =   data.tracks.track.forEach(function(item, index){
          
-            item.cloudinary = { meta:meta , tag:'clouds' lyrics:lyrics};
+            item.cloudinary = { meta:meta , tag:'clouds'};
             console.log(item,index);
          return item
       });
