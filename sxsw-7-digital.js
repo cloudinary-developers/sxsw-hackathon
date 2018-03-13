@@ -71,14 +71,14 @@ app.use(apiContext)
 
 
 var analyiseLyrics = function(lyrics){
-  
-return Algorithmia.client(algorithmia_key)
+  return new Promise(function (resolve, reject) {
+ Algorithmia.client(algorithmia_key)
     .algo("nlp/AutoTag/1.0.1")
     .pipe(lyrics)
     .then(function(response) {
         console.log(response.get());
     });
-  
+  });
 }
 
 var getLyrics = function(params){
@@ -141,8 +141,7 @@ app.get('/lyrics/:isrc', function (req, res) {
 
 
 var getSong = function(context, trackid){
-  // For access to locker / subscription streaming without managed users you
-// will need to provide the accesstoken and secret for the user
+// Create a Signed URL
 var oauth = new api.OAuth();
     return new Promise(function (resolve, reject) {
        var apiUrl = 'https://stream.svc.7digital.net/stream/catalogue?country=GB&trackid=' + trackid;
