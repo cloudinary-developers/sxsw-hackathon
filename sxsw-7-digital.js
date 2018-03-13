@@ -111,11 +111,12 @@ var getLyrics = function(params){
 }
 
 // USMC14673497  
+// 'USCJ81000500'// 'GBAFL1700342';  //?Spacewoman
 
-app.get('/lyrics', function (req, res) {
+app.get('/lyrics/:isrc', function (req, res) {
+  var track_isrc = req.params.isrc  || 'GBAFL1700342'; 
   const context = req.webtaskContext;
-  const track_isrc = context.data.isrc || '' // 'USCJ81000500'// 'GBAFL1700342';  //?Spacewoman
-  
+
   const data = { track_isrc: track_isrc };
 
    getLyrics(data)
