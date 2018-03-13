@@ -383,42 +383,10 @@ app.get('/tracks/:releaseid', function ( req, res ) {
 
 
 
-var getDetails = function(trackid) {  
-  return new Promise(function (resolve, reject) {
-    
-        tracks.getDetails({ trackid: trackid }, function(err, data) {
-        if(err){
-          console.log(err);
-            reject(err)
-        }
-        if(data){
-        //  console.log(data);
-          resolve(data);
-        } 
-      });
-  })
-}
-
-
-app.get('/details/:trackid', function ( req, res) {
-const trackid = req.params.trackid || '14643';
-  getDetails(trackid)
-  .then(function(data){
-    
-    console.log(JSON.stringify(data,null,5));
-  const isrc = data.tracks.track[0].isrc;
-  console.log(isrc);
-  
-        res.send( data);   
-   }).catch(function(err){
-      console.log('ERR:', err);
-      res.send(err);
-   })
-});
-
 
 app.get('/', function (req, res) {
-  res.sendStatus(200);
+    res.send('SXSW Hackathon API Wrapper'); 
+  // res.sendStatus(200);
 });
 
 
