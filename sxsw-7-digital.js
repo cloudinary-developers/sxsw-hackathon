@@ -369,43 +369,52 @@ app.get('/tracks/:releaseid', function( req , res ){
     
      getTracks(releaseid).then(function(tracksData) {  
        
-       const newTracks =  tracksData.tracks.track.forEach(function(item, index){
+       return  tracksData.tracks.track.forEach(function(item, index){
        const data = { track_isrc: item.isrc};
-              return getLyrics(data);
+             getLyrics(data).then(function(lyrics){
+               item.lyrics = lyrics.lyrics_body;
+                return item;
+              });
        });
         
    
 })
-.then(function(data) {
-  doThirdThingAsync();  // doSecondThingAsync has resolved?
-});
-    
-    
-    
-    // Parallel
-return Promise.all([
-     getTracks(releaseid),
-      
-]).then(arrayOfResults => {
-    // Do something with all results
-    var item = arrayOfResults[0];
-    console.log(item);
-    const data = { track_isrc: item.isrc};
-   
-})
-.then(arrayOfResults => {
-    // Do something with all results
-    var tracks = arrayOfResults[0];
-    var lyrics = arrayOfResults[1];
-    console.log(task1,task2);
-    var results = {tracks:tracks, lyrics:lyrics};
-    res.send(results); 
+.then(function(results) {
+   res.send(results); 
+  //doThirdThingAsync();  // doSecondThingAsync has resolved?
 })
 .catch(function(error) {
     // Will catch failure of first failed promise
     console.log("Failed:", error);
      res.send(error);   
   });
+    
+    
+    
+//     // Parallel
+// return Promise.all([
+//     getTracks(releaseid),
+      
+// ]).then(arrayOfResults => {
+//     // Do something with all results
+//     var item = arrayOfResults[0];
+//     console.log(item);
+//     const data = { track_isrc: item.isrc};
+   
+// })
+// .then(arrayOfResults => {
+//     // Do something with all results
+//     var tracks = arrayOfResults[0];
+//     var lyrics = arrayOfResults[1];
+//     console.log(task1,task2);
+//     var results = {tracks:tracks, lyrics:lyrics};
+//     res.send(results); 
+// })
+// .catch(function(error) {
+//     // Will catch failure of first failed promise
+//     console.log("Failed:", error);
+//     res.send(error);   
+//   });
 });
 
 
