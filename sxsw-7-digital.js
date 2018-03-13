@@ -377,21 +377,8 @@ console.log(releaseid)
           .then(function(lyrics){
               console.log(lyrics);
                lyrics.push(lyrics);
-            })
-           .catch(function(error){
-                 console.log('error\n',error);
-           });
-        
-      });
-     
-    
-    
-
-   
-    
-    
-    
- //   console.log(data); 
+               
+                //   console.log(data); 
     var tags = "clouds";
     getImagesByTags(tags)
     .then(function(dataTags){
@@ -408,7 +395,7 @@ console.log(releaseid)
     
        const newTracks =   data.tracks.track.forEach(function(item, index){
          
-            item.cloudinary = { meta:meta , tag:'clouds'};
+            item.cloudinary = { meta:meta , tag:'clouds' lyrics:lyrics};
             console.log(item,index);
          return item
       });
@@ -421,19 +408,35 @@ console.log(releaseid)
        res.send(error);
        console.log('error\n',error);
     });
+               
+               
+            })
+           .catch(function(error){
+                 console.log('error\n',error);
+           });
+      });
+     
     
-    var trackData =  data.tracks.track.map(function(item){
-      var object = {};
-      object.coverImageURL = item.release.image;
-      object.id = item.id;
-      object.title = item.title;
-      object.isrc = item.isrc;
-      object.trackNumber = item.trackNumber;
-      object.artist = item.artist;
+    
+
+   
+    
+    
+    
+
+    
+    // var trackData =  data.tracks.track.map(function(item){
+    //   var object = {};
+    //   object.coverImageURL = item.release.image;
+    //   object.id = item.id;
+    //   object.title = item.title;
+    //   object.isrc = item.isrc;
+    //   object.trackNumber = item.trackNumber;
+    //   object.artist = item.artist;
       
-      object.slug = item.release.slug;
-      return object;
-    });
+    //   object.slug = item.release.slug;
+    //   return object;
+    // });
       
 //    console.log('My list\n', trackData); 
     
