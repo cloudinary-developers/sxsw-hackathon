@@ -363,42 +363,6 @@ var getTracks = function(releaseid) {
 
 
 
-app.get('/tracks2/:releaseid', function( req , res ){
-  const releaseid = req.params.releaseid || '7456808';
-    console.log(releaseid)
-    
-    getTracks(releaseid);
-    
-    
-     releases.getTracks({ releaseid: releaseid }, function(err, tracksData) {
-        if(err){
-          console.log(err);
-        }
-        if(tracksData){
-          var items = [];
-          var len = tracksData.tracks.track;
-            tracksData.tracks.track.forEach(function(item, index){
-           
-              const data = { track_isrc: item.isrc};
-                getLyrics(data).then(function(lyrics){
-                  item.lyrics = lyrics.lyrics_body;
-                   items.push(item);
-                   
-                  })
-                  .catch(function(err){
-                   console.log(err);
-                   res.send(err);   
-                  });
-                  
-                  if(len === index-1){
-                       console.log(items);
-                       res.send(items);   
-                    }
-      });
-        }
-     }); 
-});
-
 
 
 // Get tracks by releaseID: 7456808
