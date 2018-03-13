@@ -367,34 +367,58 @@ app.get('/tracks/:releaseid', function( req , res ){
   const releaseid = req.params.releaseid || '7456808';
     console.log(releaseid)
     
-     getTracks(releaseid).then(function(tracksData) {  
-       
-       return new Promise(function(resolve,reject){
-          resolve(tracksData.tracks.track.forEach(function(item, index){
-              const data = { track_isrc: item.isrc};
-             getLyrics(data).then(function(lyrics){
+     releases.getTracks({ releaseid: releaseid }, function(err, tracksData) {
+        if(err){
+          console.log(err);
+        }
+        if(tracksData){
+          var items = [];
+          var len = tracksData.tracks.track;
+            tracksData.tracks.track.forEach(function(item, index){
+            getLyrics(data).then(function(lyrics){
                item.lyrics = lyrics.lyrics_body;
-                return item;
-              }).catch(function(error){
-                  reject(error);
-              });
-            });
-       })
-       .catch(function(error){
-                  reject(error);
-        });
-       )
+               items.push(item);
+               if(len = index){
+                 console.log(items);
+                 res.send(items);   
+               }
+          }).catch(function(err){
+            console.log(err);
+            res.send(err);   
+          })
+        } 
+      });
+   
+     }); 
+    
+//     getTracks(releaseid).then(function(tracksData) {  
+       
+//       return new Promise(function(resolve,reject){
+//           resolve(tracksData.tracks.track.forEach(function(item, index){
+//               const data = { track_isrc: item.isrc};
+//             getLyrics(data).then(function(lyrics){
+//               item.lyrics = lyrics.lyrics_body;
+//                 return item;
+//               }).catch(function(error){
+//                   reject(error);
+//               });
+//             });
+//       })
+//       .catch(function(error){
+//                   reject(error);
+//         });
+//       )
          
-})
-.then(function(results) {
-   res.send(results); 
-  //doThirdThingAsync();  // doSecondThingAsync has resolved?
-})
-.catch(function(error) {
-    // Will catch failure of first failed promise
-    console.log("Failed:", error);
-     res.send(error);   
-  });
+// })
+// .then(function(results) {
+//   res.send(results); 
+//   //doThirdThingAsync();  // doSecondThingAsync has resolved?
+// })
+// .catch(function(error) {
+//     // Will catch failure of first failed promise
+//     console.log("Failed:", error);
+//     res.send(error);   
+//   });
     
     
     
@@ -422,7 +446,7 @@ app.get('/tracks/:releaseid', function( req , res ){
 //     console.log("Failed:", error);
 //     res.send(error);   
 //   });
-});
+// });
 
 
 // Get tracks by releaseID: 7456808
