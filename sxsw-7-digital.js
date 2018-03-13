@@ -104,7 +104,7 @@ var getLyrics = function(params){
   
 }
 
-app.get('/lyrics/:isrc', function (req, res) {
+app.get('/lyrics/?:isrc', function (req, res) {
   var track_isrc = req.params.isrc ||  'USCJ81000500'
   // var q_artist = req.params.artist  || 'Cyndi Lauper';  // /lyrics/The Breeders/
   // var q_track = req.params.track  || 'True Colors';  // /lyrics/The Breeders/All Nerve/
