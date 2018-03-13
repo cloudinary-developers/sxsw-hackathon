@@ -377,7 +377,7 @@ return Promise.all([
     console.log(item);
     const data = { track_isrc: item.isrc};
     return data;
-}),
+})
 .then(arrayOfResults => {
     // Do something with all results
     var tracks = arrayOfResults[0];
