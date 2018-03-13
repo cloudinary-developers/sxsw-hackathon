@@ -67,22 +67,6 @@ var apiContext = function (req, res, next) {
 app.use(apiContext)
 
 
-var analyiseLyrics = function(lyrics){
-  return new Promise(function (resolve, reject) {
- Algorithmia.client(algorithmia_key)
-    .algo("nlp/AutoTag/1.0.1")
-    .pipe(lyrics)
-    .then(function(response) {
-      if(response.error) {
-          console.log(response.error.message);
-          reject(response.error.message);
-        }
-        console.log(response.get());
-        resolve(response.get());
-    });
-  });
-}
-
 var getLyrics = function(params){
   
   const data = {
@@ -123,22 +107,7 @@ app.get('/lyrics/:isrc', function (req, res) {
 
    getLyrics(data)
    .then(function(lyrics){
-     // NLP reduce to key words
-    // analyiseLyrics(lyrics.lyrics_body)
-    // .then(function(lyricsResponse){
-    //   const discaimer = '******* This Lyrics is NOT for Commercial use *******';
-    //     var lyrics_body = lyricsResponse.lyrics_body.replace(discaimer,'');
-    //     var results = { words:lyricsResponse, lyrics: lyrics_body};
-    //     console.log(results);
-    //     res.send(results);
-    // })
-    // .catch(function(error){
-    //     res.send(error);
-    // });
-     
-     
-     
-     
+  
     Algorithmia.client(algorithmia_key)
     .algo("nlp/AutoTag/1.0.1")
     .pipe(lyrics.lyrics_body)
