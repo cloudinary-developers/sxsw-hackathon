@@ -76,6 +76,10 @@ var analyiseLyrics = function(lyrics){
     .algo("nlp/AutoTag/1.0.1")
     .pipe(lyrics)
     .then(function(response) {
+      if(response.error) {
+          console.log(response.error.message);
+          reject(response.error.message);
+        }
         console.log(response.get());
         resolve(response.get());
     });
