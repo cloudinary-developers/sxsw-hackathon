@@ -378,9 +378,11 @@ var lyrics = [];
           .then(function(lyrics){
               console.log(lyrics);
                lyrics.push(lyrics);
+               res.send(lyrics);   
             })
            .catch(function(error){
                  console.log('error\n',error);
+                  res.send(error);   
            });
       });
      
@@ -391,36 +393,36 @@ var lyrics = [];
     
     
     
- //   console.log(data); 
-    var tags = "clouds";
-    getImagesByTags(tags)
-    .then(function(dataTags){
- //     console.log('tags\n',dataTags);
-   var meta = dataTags.resources.map(function(item){
-        var object = {};
-        object.url = item.secure_url;
-        object.public_id = item.public_id;
-        return object;
-      });
+// //   console.log(data); 
+//     var tags = "clouds";
+//     getImagesByTags(tags)
+//     .then(function(dataTags){
+// //     console.log('tags\n',dataTags);
+//   var meta = dataTags.resources.map(function(item){
+//         var object = {};
+//         object.url = item.secure_url;
+//         object.public_id = item.public_id;
+//         return object;
+//       });
      
-   // console.log('meta\n',meta);  
+//   // console.log('meta\n',meta);  
     
     
-       const newTracks =   data.tracks.track.forEach(function(item, index){
+//       const newTracks =   data.tracks.track.forEach(function(item, index){
          
-            item.cloudinary = { meta:meta , tag:'clouds'};
-            console.log(item,index);
-         return item
-      });
-      data.tracks.track =  data.tracks.track; 
-     // data.tracks.track[0].cloudinary = {meta: };
-      console.log('data enhanced \n',data);
-      res.send( data);   
-    })
-    .catch(function(error){
-       res.send(error);
-       console.log('error\n',error);
-    });
+//             item.cloudinary = { meta:meta , tag:'clouds'};
+//             console.log(item,index);
+//         return item
+//       });
+//       data.tracks.track =  data.tracks.track; 
+//     // data.tracks.track[0].cloudinary = {meta: };
+//       console.log('data enhanced \n',data);
+//       res.send( data);   
+//     })
+//     .catch(function(error){
+//       res.send(error);
+//       console.log('error\n',error);
+//     });
     
     // var trackData =  data.tracks.track.map(function(item){
     //   var object = {};
