@@ -335,15 +335,15 @@ const public_id = req.params.publicid || 'Cyndi_Lauper';
 console.log(url, public_id);
 
 
-res.send({url:url, public_id:public_id}); 
+// res.send({url:url, public_id:public_id}); 
 
-  // uploadImage(url,public_id)
-  // .then(function(data){
-  //       res.send(data);   
-  // }).catch(function(err){
-  //     console.log('ERR:', Err);
-  //     res.send(err);
-  // })
+  uploadImage(url,public_id)
+  .then(function(data){
+        res.send(data);   
+  }).catch(function(err){
+      console.log('ERR:', Err);
+      res.send(err);
+  })
 });
 
 
