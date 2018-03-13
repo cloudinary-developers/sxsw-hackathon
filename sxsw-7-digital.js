@@ -361,8 +361,34 @@ var getTracks = function(releaseid) {
   })
 }
 
+
+
+app.get('/tracks/:releaseid', function( req , res ){
+  const releaseid = req.params.releaseid || '7456808';
+    console.log(releaseid)
+
+  Promise.all([ getTracks(releaseid) ])  
+  .then(function(tracks) {
+     // we only get here if ALL promises fulfill
+     var items =  results.forEach(function(item) {
+         const data = { track_isrc: item.isrc};
+         console.log();
+        return data;  
+        //  getLyrics(data)
+    })
+    
+     res.send(items); 
+  }).
+  .catch(function(error) {
+    // Will catch failure of first failed promise
+    console.log("Failed:", error);
+     res.send(error);   
+  });
+});
+
+
 // Get tracks by releaseID: 7456808
-app.get('/tracks/:releaseid', function ( req, res) {
+app.get('/tracks1/:releaseid', function ( req, res) {
   
 const releaseid = req.params.releaseid || '7456808';
 console.log(releaseid)
