@@ -127,30 +127,30 @@ app.get('/lyrics/:isrc', function (req, res) {
    getLyrics(data)
    .then(function(lyrics){
      // NLP reduce to key words
-     analyiseLyrics(lyrics.lyrics_body)
-     .then(function(lyricsResponse){
-       const discaimer = '******* This Lyrics is NOT for Commercial use *******';
-        var lyrics_body = lyricsResponse.lyrics_body.replace(discaimer,'');
-        var results = { words:lyricsResponse, lyrics: lyrics_body};
-        console.log(results);
-        res.send(results);
-     })
-     .catch(function(error){
-        res.send(error);
-     });
-     
-     
-     
-     
-    // Algorithmia.client(algorithmia_key)
-    // .algo("nlp/AutoTag/1.0.1")
-    // .pipe(lyrics.lyrics_body)
-    // .then(function(response) {
-    //     console.log(response.get());
-    //     var lyrics_body = lyrics.lyrics_body.replace('******* This Lyrics is NOT for Commercial use *******','');
-    //     var results = { words:response.get(), lyrics: lyrics_body};
+    // analyiseLyrics(lyrics.lyrics_body)
+    // .then(function(lyricsResponse){
+    //   const discaimer = '******* This Lyrics is NOT for Commercial use *******';
+    //     var lyrics_body = lyricsResponse.lyrics_body.replace(discaimer,'');
+    //     var results = { words:lyricsResponse, lyrics: lyrics_body};
+    //     console.log(results);
     //     res.send(results);
+    // })
+    // .catch(function(error){
+    //     res.send(error);
     // });
+     
+     
+     
+     
+    Algorithmia.client(algorithmia_key)
+    .algo("nlp/AutoTag/1.0.1")
+    .pipe(lyrics.lyrics_body)
+    .then(function(response) {
+        console.log(response.get());
+        var lyrics_body = lyrics.lyrics_body.replace('******* This Lyrics is NOT for Commercial use *******','');
+        var results = { words:response.get(), lyrics: lyrics_body};
+        res.send(results);
+    });
     
           
    })
