@@ -327,7 +327,7 @@ return  new Promise(function (resolve, reject) {
 }
 
 
-app.get('/upload/:publicid', function ( req, res) {
+app.get('/upload/?:publicid', function ( req, res) {
 const url = req.params.url || 'http://artwork-cdn.7static.com/static/img/artistimages/00/000/113/0000011319_300.jpg';
 const public_id = req.params.publicid || 'Cyndi_Lauper';
 
