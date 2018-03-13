@@ -3,9 +3,6 @@ const express    = require('express');
 const Webtask    = require('webtask-tools');
 const bodyParser = require('body-parser');
 const request = require('request');
-const parsePath = require('parse-filepath');
-
-const axios = require('axios');
 const JSONP = require('node-jsonp');
 var Algorithmia = require('algorithmia');
 
