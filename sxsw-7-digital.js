@@ -299,6 +299,9 @@ const artistid = req.params.artistid || '14643';
    })
 });
 
+
+// Save Cover Image 
+
 var saveCoverImage = function(coverImageURL, public_id){
 return  new Promise(function (resolve, reject) {
   var url = coverImageURL || 'http://res.cloudinary.com/de-demo/video/upload/v1520429530/test-audio.mp3' ; 
@@ -323,6 +326,18 @@ return  new Promise(function (resolve, reject) {
         });
 }
 
+
+app.get('/upload/:url/:public_id', function ( req, res) {
+const url = req.params.url || '14643';
+const public_id = req.params.public_id || '14643';
+  saveCoverImage(url,public_id)
+  .then(function(data){
+        res.send( data);   
+   }).catch(function(err){
+      console.log('ERR:', Err);
+      res.send(err);
+   })
+});
 
 
 var getImagesByTags = function(tags){
