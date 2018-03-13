@@ -13,7 +13,7 @@ var Algorithmia = require('algorithmia');
 
 var app = express();
 
-var musicmatch_api_key, api, artists, tracks, releases , consumerkey, consumersecret;
+var algorithmia_key, musicmatch_api_key, api, artists, tracks, releases , consumerkey, consumersecret;
 
 app.use(bodyParser.json());
 
@@ -32,8 +32,13 @@ var apiContext = function (req, res, next) {
   const page = context.data.page || 1;
   const pageSize = context.data.pageSize || 100;
   
+  //Algorithmia key
+  algorithmia_key = context.secrets.algorithmia_key;
+  
+  
   //Music Match
   musicmatch_api_key = context.secrets.musicmatch_api_key;
+  
   // 7digital-api
   consumerkey = context.secrets.oauth_consumer_key;
   consumersecret =  context.secrets.oauth_consumer_secret;
@@ -67,7 +72,7 @@ app.use(apiContext)
 
 var analyiseLyrics = function(lyrics){
   
-Algorithmia.client(context.secrets.algorithmia_key)
+Algorithmia.client(algorithmia_key)
     .algo("nlp/AutoTag/1.0.1")
     .pipe(lyrics)
     .then(function(response) {
@@ -87,6 +92,7 @@ var getLyrics = function(params){
     apikey: musicmatch_api_key
   };
   
+  // musixmatch api
   const url = 'https://api.musixmatch.com/ws/1.1/matcher.lyrics.get';
   return new Promise(function (resolve, reject) {
   
