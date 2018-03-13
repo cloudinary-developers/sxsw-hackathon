@@ -367,16 +367,31 @@ app.get('/tracks/:releaseid', function( req , res ){
   const releaseid = req.params.releaseid || '7456808';
     console.log(releaseid)
     
+     getTracks(releaseid).then(function(tracksData) {  
+       
+       const newTracks =  tracksData.tracks.track.forEach(function(item, index){
+       const data = { track_isrc: item.isrc};
+              return getLyrics(data);
+       });
+        
+   
+})
+.then(function(data) {
+  doThirdThingAsync();  // doSecondThingAsync has resolved?
+});
+    
+    
+    
     // Parallel
 return Promise.all([
      getTracks(releaseid),
-     
+      
 ]).then(arrayOfResults => {
     // Do something with all results
     var item = arrayOfResults[0];
     console.log(item);
     const data = { track_isrc: item.isrc};
-    getLyrics(data);
+   
 })
 .then(arrayOfResults => {
     // Do something with all results
