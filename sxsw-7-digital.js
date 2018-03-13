@@ -370,16 +370,17 @@ console.log(releaseid)
   getTracks(releaseid)
   .then(function(data){
     var lyrics = [];
+    
     data.tracks.track.forEach(function(item, index){
          const data = { track_isrc: item.isrc};
           getLyrics(data)
           .then(function(lyrics){
-            console.log(lyrics);
-             lyrics.push(lyrics);
+              console.log(lyrics);
+               lyrics.push(lyrics);
             })
-   .catch(function(error){
-         
-   });
+           .catch(function(error){
+                 console.log('error\n',error);
+           });
         
       });
      
