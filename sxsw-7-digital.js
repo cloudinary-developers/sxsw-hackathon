@@ -372,8 +372,18 @@ return Promise.all([
      getTracks(releaseid)
 ]).then(arrayOfResults => {
     // Do something with all results
-    var task1 = arrayOfResults[0];
-    res.send(task1); 
+    var item = arrayOfResults[0];
+    console.log(item);
+    const data = { track_isrc: item.isrc};
+    getLyrics(data);
+}),
+.then(arrayOfResults => {
+    // Do something with all results
+    var tracks = arrayOfResults[0];
+    var lyrics = arrayOfResults[1];
+    console.log(task1,task2);
+    var results = {tracks:tracks, lyrics:lyrics};
+    res.send(results); 
 })
 .catch(function(error) {
     // Will catch failure of first failed promise
