@@ -124,7 +124,17 @@ app.get('/lyrics', function (req, res) {
 
    getLyrics(data)
    .then(function(lyrics){
-          res.send(lyrics);
+     
+     Algorithmia.client(context.secrets.algorithmia_key)
+    .algo("nlp/AutoTag/1.0.1")
+    .pipe(lyrics.lyrics_body)
+    .then(function(response) {
+        console.log(response.get());
+        var r = {words:response.get(),lyrics: lyrics.lyrics_body };
+        res.send(r);
+    });
+    
+          
    })
    .catch(function(error){
           res.send(error);
