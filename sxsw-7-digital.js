@@ -369,13 +369,14 @@ app.get('/tracks/:releaseid', function( req , res ){
     
     // Parallel
 return Promise.all([
-     getTracks(releaseid)
+     getTracks(releaseid),
+     getLyrics(data)
 ]).then(arrayOfResults => {
     // Do something with all results
     var item = arrayOfResults[0];
     console.log(item);
     const data = { track_isrc: item.isrc};
-    getLyrics(data);
+    return data;
 }),
 .then(arrayOfResults => {
     // Do something with all results
