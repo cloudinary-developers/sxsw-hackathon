@@ -388,9 +388,10 @@ app.get('/tracks/:releaseid', function( req , res ){
           })
         } 
       });
-   
+  
      }); 
-    
+});
+
 //     getTracks(releaseid).then(function(tracksData) {  
        
 //       return new Promise(function(resolve,reject){
