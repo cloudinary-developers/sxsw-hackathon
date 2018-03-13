@@ -363,9 +363,13 @@ var getTracks = function(releaseid) {
 
 
 
-app.get('/tracks/:releaseid', function( req , res ){
+app.get('/tracks2/:releaseid', function( req , res ){
   const releaseid = req.params.releaseid || '7456808';
     console.log(releaseid)
+    
+    getTracks(releaseid);
+    
+    
      releases.getTracks({ releaseid: releaseid }, function(err, tracksData) {
         if(err){
           console.log(err);
@@ -398,7 +402,7 @@ app.get('/tracks/:releaseid', function( req , res ){
 
 
 // Get tracks by releaseID: 7456808
-app.get('/tracks1/:releaseid', function ( req, res) {
+app.get('/tracks/:releaseid', function ( req, res) {
   
 const releaseid = req.params.releaseid || '7456808';
 console.log(releaseid)
