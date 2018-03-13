@@ -111,21 +111,10 @@ var getLyrics = function(params){
 }
 
 app.get('/lyrics', function (req, res) {
-  var q_artist = req.params.artist  || 'Cyndi Lauper';  // /lyrics/The Breeders/
-  var q_track = req.params.track  || 'True Colors';  // /lyrics/The Breeders/All Nerve/
   const context = req.webtaskContext;
   const track_isrc = context.data.isrc || '' // 'USCJ81000500'// 'GBAFL1700342';  //?Spacewoman
   
-    if(track_isrc){
-      q_artist = "";
-      q_track = ""
-    }
-  
-  const data = {
-    q_track: q_track,
-    q_artist: q_artist,
-    track_isrc: track_isrc,
-   };
+  const data = { track_isrc: track_isrc };
 
    getLyrics(data)
    .then(function(lyrics){
@@ -136,7 +125,7 @@ app.get('/lyrics', function (req, res) {
     .then(function(response) {
         console.log(response.get());
         var lyrics_body = lyrics.lyrics_body.replace('******* This Lyrics is NOT for Commercial use *******','');
-        var results = {words:response.get(),lyrics: lyrics_body};
+        var results = { words:response.get(), lyrics: lyrics_body};
         res.send(results);
     });
     
