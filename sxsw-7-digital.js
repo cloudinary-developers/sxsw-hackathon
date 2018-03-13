@@ -72,7 +72,7 @@ app.use(apiContext)
 
 var analyiseLyrics = function(lyrics){
   
-Algorithmia.client(algorithmia_key)
+return Algorithmia.client(algorithmia_key)
     .algo("nlp/AutoTag/1.0.1")
     .pipe(lyrics)
     .then(function(response) {
