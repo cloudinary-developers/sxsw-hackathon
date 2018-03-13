@@ -77,6 +77,7 @@ var analyiseLyrics = function(lyrics){
     .pipe(lyrics)
     .then(function(response) {
         console.log(response.get());
+        resolve(response.get());
     });
   });
 }
