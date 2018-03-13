@@ -374,19 +374,22 @@ app.get('/tracks/:releaseid', function( req , res ){
           var items = [];
           var len = tracksData.tracks.track;
             tracksData.tracks.track.forEach(function(item, index){
+           
               const data = { track_isrc: item.isrc};
                 getLyrics(data).then(function(lyrics){
                   item.lyrics = lyrics.lyrics_body;
                    items.push(item);
-                   if(len = index){
-                       console.log(items);
-                       res.send(items);   
-                     }
+                   
                   })
                   .catch(function(err){
                    console.log(err);
                    res.send(err);   
                   });
+                  
+                  if(len === index){
+                       console.log(items);
+                       res.send(items);   
+                    }
       });
         }
      }); 
