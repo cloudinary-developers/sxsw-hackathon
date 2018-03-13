@@ -366,20 +366,16 @@ var getTracks = function(releaseid) {
 app.get('/tracks/:releaseid', function( req , res ){
   const releaseid = req.params.releaseid || '7456808';
     console.log(releaseid)
-
-  Promise.all([ getTracks(releaseid) ])  
-  .then(function(tracks) {
-     // we only get here if ALL promises fulfill
-     var items =  results.forEach(function(item) {
-         const data = { track_isrc: item.isrc};
-         console.log();
-        return data;  
-        //  getLyrics(data)
-    })
     
-     res.send(items); 
-  }).
-  .catch(function(error) {
+    // Parallel
+return Promise.all([
+     getTracks(releaseid)
+]).then(arrayOfResults => {
+    // Do something with all results
+    var task1 = arrayOfResults[0];
+    res.send(task1); 
+})
+.catch(function(error) {
     // Will catch failure of first failed promise
     console.log("Failed:", error);
      res.send(error);   
