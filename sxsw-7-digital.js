@@ -366,11 +366,11 @@ app.get('/tracks/:releaseid', function ( req, res) {
   
 const releaseid = req.params.releaseid || '7456808';
 console.log(releaseid)
-var lyrics = [];
+
 
   getTracks(releaseid)
   .then(function(data){
-    
+    var lyrics = [];
     
     data.tracks.track.forEach(function(item, index){
          const data = { track_isrc: item.isrc};
