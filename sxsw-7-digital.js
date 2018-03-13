@@ -386,7 +386,7 @@ app.get('/tracks/:releaseid', function( req , res ){
                    res.send(err);   
                   });
                   
-                  if(len === index){
+                  if(len === index-1){
                        console.log(items);
                        res.send(items);   
                     }
