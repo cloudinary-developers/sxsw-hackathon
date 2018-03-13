@@ -372,19 +372,39 @@ console.log(releaseid)
   .then(function(data){
     var lyricsList = [];
     
-    data.tracks.track.forEach(function(item, index){
+     const newTracks =   data.tracks.track.forEach(function(item, index){
          const data = { track_isrc: item.isrc};
           getLyrics(data)
           .then(function(lyrics){
-              console.log(lyrics.lyrics_body);
-               lyricsList.push(lyrics);
-               res.send(lyrics);   
+           //   console.log(lyrics.lyrics_body);
+              item.lyrics = lyrics.lyrics_body
             })
            .catch(function(error){
                  console.log('error\n',error);
                   res.send(error);   
            });
+         
+            item.cloudinary = { meta:meta , tag:'clouds'};
+            console.log(item,index);
+        return item
       });
+    
+    
+     res.send(newTracks);  
+    
+    // data.tracks.track.forEach(function(item, index){
+    //     const data = { track_isrc: item.isrc};
+    //       getLyrics(data)
+    //       .then(function(lyrics){
+    //           console.log(lyrics.lyrics_body);
+    //           lyricsList.push(lyrics);
+    //           res.send(lyrics);   
+    //         })
+    //       .catch(function(error){
+    //             console.log('error\n',error);
+    //               res.send(error);   
+    //       });
+    //   });
      
     
     
