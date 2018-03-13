@@ -402,7 +402,23 @@ app.get('/tracks2/:releaseid', function( req , res ){
 
 
 // Get tracks by releaseID: 7456808
-app.get('/tracks/:releaseid', function ( req, res) {
+app.get('/tracks/:releaseid', function ( req, res ) {
+  
+  const releaseid = req.params.releaseid || '7456808';
+    console.log(releaseid);
+    getTracks(releaseid)
+    .then(function(data){
+      
+      res.send(data); 
+      
+    }).catch(function(error){
+       res.send(error);
+    });
+    
+});
+
+
+app.get('/tracks11/:releaseid', function ( req, res) {
   
 const releaseid = req.params.releaseid || '7456808';
 console.log(releaseid)
@@ -526,17 +542,6 @@ console.log(releaseid)
 
 
 
-// var getLyrics = function(isrc, data) {  
-//   return new Promise(function (resolve, reject) {
-//     //matcher.lyrics.get?track_isrc=isrc
-
-       
-//             reject(err)
-   
-//           resolve(data);
- 
-//   })
-// }
 
 
 var getDetails = function(trackid) {  
