@@ -369,15 +369,18 @@ app.get('/tracks/:releaseid', function( req , res ){
     
      getTracks(releaseid).then(function(tracksData) {  
        
-       return  tracksData.tracks.track.forEach(function(item, index){
-       const data = { track_isrc: item.isrc};
+       return new Promise(function(resolve,reject){
+          resolve(tracksData.tracks.track.forEach(function(item, index){
+              const data = { track_isrc: item.isrc};
              getLyrics(data).then(function(lyrics){
                item.lyrics = lyrics.lyrics_body;
                 return item;
+              }).catch(function(error){
+                  reject(error);
               });
-       });
-        
-   
+            });
+       }))
+         
 })
 .then(function(results) {
    res.send(results); 
