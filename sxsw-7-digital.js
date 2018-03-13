@@ -373,7 +373,7 @@ app.get('/tracks/:releaseid', function ( req, res ) {
     getTracks(releaseid)
     .then(function(data){
       console.log(JSON.stringify(data,null,5));
-      res.send((JSON.stringify(data,null,5)); 
+      res.send(JSON.stringify(data,null,5)); 
       
     }).catch(function(error){
        res.send(error);
