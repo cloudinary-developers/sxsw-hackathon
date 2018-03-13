@@ -299,7 +299,7 @@ const artistid = req.params.artistid || '14643';
    })
 });
 
-var getThemes = function(coverImageURL, public_id){
+var saveCoverImage = function(coverImageURL, public_id){
 return  new Promise(function (resolve, reject) {
   var url = coverImageURL || 'http://res.cloudinary.com/de-demo/video/upload/v1520429530/test-audio.mp3' ; 
    
@@ -416,7 +416,7 @@ console.log(releaseid)
     // var public_id = data.tracks.track[0].title.replace(' ','_') + '_' + data.tracks.track[0].id;
     // console.log('coverImageURL', coverImageURL, public_id); 
     // // res.send( data);   
-    //   getThemes(coverImageURL, public_id)
+    //   saveCoverImage(coverImageURL, public_id)
     //   .then(function(imageData){
     //       data.tracks.track[0].cloudinary = imageData;
     //       console.log(data); 
