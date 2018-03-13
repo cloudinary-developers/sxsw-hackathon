@@ -385,7 +385,8 @@ app.get('/tracks/:releaseid', function ( req, res ) {
 
 
 app.get('/', function (req, res) {
-    res.send('SXSW Hackathon API Wrapper'); 
+  const html = `<a href="https://cloudinary.gitbooks.io/sxsw-2018-hackathon-guide/content/">Hackathon Guide<a>`;
+    res.send(html); 
   // res.sendStatus(200);
 });
 
