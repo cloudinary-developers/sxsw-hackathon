@@ -366,7 +366,6 @@ var getTracks = function(releaseid) {
 app.get('/tracks/:releaseid', function( req , res ){
   const releaseid = req.params.releaseid || '7456808';
     console.log(releaseid)
-    
      releases.getTracks({ releaseid: releaseid }, function(err, tracksData) {
         if(err){
           console.log(err);
@@ -382,72 +381,16 @@ app.get('/tracks/:releaseid', function( req , res ){
                  console.log(items);
                  res.send(items);   
                }
-          }).catch(function(err){
-            console.log(err);
-            res.send(err);   
-          })
+              }).catch(function(err){
+                   console.log(err);
+                   res.send(err);   
+              })
         } 
       });
   
      }); 
 });
 
-//     getTracks(releaseid).then(function(tracksData) {  
-       
-//       return new Promise(function(resolve,reject){
-//           resolve(tracksData.tracks.track.forEach(function(item, index){
-//               const data = { track_isrc: item.isrc};
-//             getLyrics(data).then(function(lyrics){
-//               item.lyrics = lyrics.lyrics_body;
-//                 return item;
-//               }).catch(function(error){
-//                   reject(error);
-//               });
-//             });
-//       })
-//       .catch(function(error){
-//                   reject(error);
-//         });
-//       )
-         
-// })
-// .then(function(results) {
-//   res.send(results); 
-//   //doThirdThingAsync();  // doSecondThingAsync has resolved?
-// })
-// .catch(function(error) {
-//     // Will catch failure of first failed promise
-//     console.log("Failed:", error);
-//     res.send(error);   
-//   });
-    
-    
-    
-//     // Parallel
-// return Promise.all([
-//     getTracks(releaseid),
-      
-// ]).then(arrayOfResults => {
-//     // Do something with all results
-//     var item = arrayOfResults[0];
-//     console.log(item);
-//     const data = { track_isrc: item.isrc};
-   
-// })
-// .then(arrayOfResults => {
-//     // Do something with all results
-//     var tracks = arrayOfResults[0];
-//     var lyrics = arrayOfResults[1];
-//     console.log(task1,task2);
-//     var results = {tracks:tracks, lyrics:lyrics};
-//     res.send(results); 
-// })
-// .catch(function(error) {
-//     // Will catch failure of first failed promise
-//     console.log("Failed:", error);
-//     res.send(error);   
-//   });
-// });
 
 
 // Get tracks by releaseID: 7456808
