@@ -106,8 +106,8 @@ var getLyrics = function(params){
 
 app.get('/lyrics', function (req, res) {
   
-  var q_artist = req.params.artist  || 'The Breeders';  // /lyrics/The Breeders/
-  var q_track = req.params.track  || 'Spacewoman';  // /lyrics/The Breeders/All Nerve/
+  var q_artist = req.params.artist  || 'Cyndi Lauper';  // /lyrics/The Breeders/
+  var q_track = req.params.track  || 'True Colors';  // /lyrics/The Breeders/All Nerve/
   const context = req.webtaskContext;
   const track_isrc = context.data.isrc || 'GBAFL1700342';  //?Spacewoman
   
