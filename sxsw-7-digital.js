@@ -343,6 +343,9 @@ return  new Promise(function (resolve, reject) {
 
 
 
+
+
+
 // Get tracks by releaseID: 
 var getTracks = function(releaseid) {  
   return new Promise(function (resolve, reject) {
@@ -352,7 +355,6 @@ var getTracks = function(releaseid) {
             reject(err)
         }
         if(data){
-       //   console.log(data);
           resolve(data);
         } 
       });
@@ -364,17 +366,39 @@ app.get('/tracks/:releaseid', function ( req, res) {
   
 const releaseid = req.params.releaseid || '7456808';
 console.log(releaseid)
+
   getTracks(releaseid)
   .then(function(data){
+    var lyrics = [];
+    data.tracks.track.forEach(function(item, index){
+         const data = { track_isrc: item.isrc};
+          getLyrics(data)
+          .then(function(lyrics){
+            console.log(lyrics);
+             lyrics.push(lyrics);
+            })
+   .catch(function(error){
+         
+   });
+        
+      });
+     
+    
+    
+
+   
+    
+    
+    
  //   console.log(data); 
     var tags = "clouds";
     getImagesByTags(tags)
     .then(function(dataTags){
  //     console.log('tags\n',dataTags);
-   var meta =   dataTags.resources.map(function(item){
-      var object = {};
-      object.url = item.secure_url;
-      object.public_id = item.public_id;
+   var meta = dataTags.resources.map(function(item){
+        var object = {};
+        object.url = item.secure_url;
+        object.public_id = item.public_id;
         return object;
       });
      
@@ -382,6 +406,7 @@ console.log(releaseid)
     
     
        const newTracks =   data.tracks.track.forEach(function(item, index){
+         
             item.cloudinary = { meta:meta , tag:'clouds'};
             console.log(item,index);
          return item
