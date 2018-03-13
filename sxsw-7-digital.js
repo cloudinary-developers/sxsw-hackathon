@@ -379,7 +379,11 @@ app.get('/tracks/:releaseid', function( req , res ){
                   reject(error);
               });
             });
-       }))
+       })
+       .catch(function(error){
+                  reject(error);
+        });
+       )
          
 })
 .then(function(results) {
