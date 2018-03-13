@@ -132,6 +132,7 @@ app.get('/lyrics/:isrc', function (req, res) {
        const discaimer = '******* This Lyrics is NOT for Commercial use *******';
         var lyrics_body = lyricsResponse.lyrics_body.replace(discaimer,'');
         var results = { words:lyricsResponse, lyrics: lyrics_body};
+        console.log(results);
         res.send(results);
      })
      .catch(function(error){
