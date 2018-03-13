@@ -129,7 +129,8 @@ app.get('/lyrics', function (req, res) {
     .pipe(lyrics.lyrics_body)
     .then(function(response) {
         console.log(response.get());
-        var results = {words:response.get(),lyrics: lyrics.lyrics_body };
+        var lyrics_body = lyrics.lyrics_body.replace('******* This Lyrics is NOT for Commercial use *******','');
+        var results = {words:response.get(),lyrics: lyrics_body};
         res.send(results);
     });
     
