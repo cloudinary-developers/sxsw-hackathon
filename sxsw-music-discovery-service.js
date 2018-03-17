@@ -222,8 +222,8 @@ app.get('/browse/:letter', function ( req, res) {
   browse(letter).then(function(data){
         console.log(JSON.stringify(data,null,5));
         res.send( data);   
-   }).catch(function(err){
-      console.log('ERR:', Err);
+   }).catch(function(error){
+      console.log('error:', error);
       res.send(err);
    })
   
