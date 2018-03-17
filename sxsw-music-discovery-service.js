@@ -224,7 +224,7 @@ app.get('/browse/:letter', function ( req, res) {
         res.send( data);   
    }).catch(function(error){
       console.log('error:', error);
-      res.send(err);
+      res.send(error);
    })
   
 });
@@ -251,7 +251,7 @@ app.get('/search/:query', function ( req, res) {
         res.send( data);   
    })
    .catch(function(error){
-      console.log('ERR: ', error);
+      console.log('error: ', error);
       res.send(error);
    })
 });
@@ -280,9 +280,9 @@ const artistid = req.params.artistid || '14643';
   getReleases(artistid)
   .then(function(data){
         res.send( data);   
-   }).catch(function(err){
-      console.log('ERR:', Err);
-      res.send(err);
+   }).catch(function(error){
+      console.log('error:', error);
+      res.send(error);
    })
 });
 
@@ -330,9 +330,9 @@ console.log(url, public_id);
   uploadImage(url,public_id)
   .then(function(data){
         res.send(data);   
-  }).catch(function(err){
-      console.log('ERR:', Err);
-      res.send(err);
+  }).catch(function(error){
+      console.log('error:', error);
+      res.send(error);
   })
 });
 
