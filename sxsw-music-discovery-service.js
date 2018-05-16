@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const request = require('request');
 const JSONP = require('node-jsonp');
 const Algorithmia = require('algorithmia');
-const api = require('7digital-api').configure
+const api = require('7digital-api');
 
 
 
