@@ -41,7 +41,7 @@ var apiContext = function (req, res, next) {
   consumerkey = context.secrets.oauth_consumer_key;
   consumersecret =  context.secrets.oauth_consumer_secret;
   
-  api = require('7digital-api').configure({
+  api.configure({
 	  format: 'JSON',
 	  consumerkey: context.secrets.oauth_consumer_key,
 	  consumersecret: context.secrets.oauth_consumer_secret,
