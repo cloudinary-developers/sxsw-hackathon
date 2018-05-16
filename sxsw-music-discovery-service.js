@@ -4,13 +4,14 @@ const Webtask    = require('webtask-tools');
 const bodyParser = require('body-parser');
 const request = require('request');
 const JSONP = require('node-jsonp');
-var Algorithmia = require('algorithmia');
+const Algorithmia = require('algorithmia');
+const api = require('7digital-api').configure
 
 
 
 var app = express();
 
-var algorithmia_key, musicmatch_api_key, api, artists, tracks, releases , consumerkey, consumersecret;
+var algorithmia_key, musicmatch_api_key, artists, tracks, releases , consumerkey, consumersecret;
 
 app.use(bodyParser.json());
 
